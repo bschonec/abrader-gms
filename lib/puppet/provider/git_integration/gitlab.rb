@@ -59,12 +59,12 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       req.body = data.to_json
     end
 
-    Puppet.debug("gitlab_webhook::#{calling_method}: REST API #{req.method} Endpoint: #{uri.to_s}")
-    Puppet.debug("gitlab_webhook::#{calling_method}: REST API #{req.method} Request: #{req.inspect}")
+    Puppet.debug("gitlab_integration::#{calling_method}: REST API #{req.method} Endpoint: #{uri.to_s}")
+    Puppet.debug("gitlab_integration::#{calling_method}: REST API #{req.method} Request: #{req.inspect}")
 
     response = http.request(req)
 
-    Puppet.debug("gitlab_webhook::#{calling_method}: REST API #{req.method} Response: #{response.inspect}")
+    Puppet.debug("gitlab_integration::#{calling_method}: REST API #{req.method} Response: #{response.inspect}")
 
     response
   end
@@ -72,25 +72,25 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def exists?
     project_id = get_project_id
 
-    webhook_hash = Hash.new
+    integration_hash = Hash.new
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks"
 
     response = api_call('GET', url)
 
-    webhook_json = JSON.parse(response.body)
+    integration_json = JSON.parse(response.body)
 
-    webhook_json.each do |child|
-      webhook_hash[child['url']] = child['id']
+    integration_json.each do |child|
+      integration_hash[child['url']] = child['id']
     end
 
-    webhook_hash.keys.each do |k|
-      if k.eql?(resource[:webhook_url].strip)
-        Puppet.debug "gitlab_webhook::#{calling_method}: Webhook already exists as specified in calling resource block."
+    integration_hash.keys.each do |k|
+      if k.eql?(resource[:integration_url].strip)
+        Puppet.debug "gitlab_integration::#{calling_method}: Webhook already exists as specified in calling resource block."
         return true
       end
     end
 
-    Puppet.debug "gitlab_webhook::#{calling_method}: Webhook does not currently exist as specified in calling resource block."
+    Puppet.debug "gitlab_integration::#{calling_method}: Webhook does not currently exist as specified in calling resource block."
     return false
   end
 
@@ -98,7 +98,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     return resource[:project_id].to_i unless resource[:project_id].nil?
 
     if resource[:project_name].nil?
-      raise(Puppet::Error, "gitlab_webhook::#{calling_method}: Must provide at least one of the following attributes: project_id or project_name")
+      raise(Puppet::Error, "gitlab_integration::#{calling_method}: Must provide at least one of the following attributes: project_id or project_name")
     end
 
     project_name = resource[:project_name].strip.gsub('/','%2F')
@@ -109,29 +109,29 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       response = api_call('GET', url)
       return JSON.parse(response.body)['id'].to_i
     rescue Exception => e
-      fail(Puppet::Error, "gitlab_webhook::#{calling_method}: #{e.message}")
+      fail(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
       return nil
     end
 
   end
 
-  def get_webhook_id
+  def get_integration_id
     project_id = get_project_id
 
-    webhook_hash = Hash.new
+    integration_hash = Hash.new
 
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks"
 
     response = api_call('GET', url)
 
-    webhook_json = JSON.parse(response.body)
+    integration_json = JSON.parse(response.body)
 
-    webhook_json.each do |child|
-      webhook_hash[child['url']] = child['id']
+    integration_json.each do |child|
+      integration_hash[child['url']] = child['id']
     end
 
-    webhook_hash.each do |k,v|
-      if k.eql?(resource[:webhook_url].strip)
+    integration_hash.each do |k,v|
+      if k.eql?(resource[:integration_url].strip)
         return v.to_i
       end
     end
@@ -145,7 +145,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks"
 
     begin
-      opts = { 'url' => resource[:webhook_url].strip }
+      opts = { 'url' => resource[:integration_url].strip }
 
       if resource.disable_ssl_verify?
         if resource[:disable_ssl_verify] == true
@@ -172,20 +172,20 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       if (response.class == Net::HTTPCreated)
         return true
       else
-        raise(Puppet::Error, "gitlab_webhook::#{calling_method}: #{response.inspect}")
+        raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{response.inspect}")
       end
     rescue Exception => e
-      raise(Puppet::Error, "gitlab_webhook::#{calling_method}: #{e.message}")
+      raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
     end
   end
 
   def destroy
     project_id = get_project_id
 
-    webhook_id = get_webhook_id
+    integration_id = get_integration_id
 
-    unless webhook_id.nil?
-      url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks/#{webhook_id}"
+    unless integration_id.nil?
+      url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks/#{integration_id}"
 
       begin
         response = api_call('DELETE', url)
@@ -193,10 +193,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
         if (response.class == Net::HTTPOK)
           return true
         else
-          raise(Puppet::Error, "gitlab_webhook::#{calling_method}: #{response.inspect}")
+          raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{response.inspect}")
         end
       rescue Exception => e
-        raise(Puppet::Error, "gitlab_webhook::#{calling_method}: #{e.message}")
+        raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
       end
 
     end

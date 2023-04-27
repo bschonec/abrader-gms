@@ -17,11 +17,11 @@ module Puppet
       desc 'A unique title for the key that will be provided to the prefered Git management system. Required.'
     end
 
-    newparam(:webhook_url) do
-      desc 'The URL the webhook will trigger upon a commit to the respective respository. Required. NOTE: GitHub & GitLab only.'
+    newparam(:integration_url) do
+      desc 'The URL the integration will trigger upon a commit to the respective respository. Required. NOTE: GitHub & GitLab only.'
       validate do |value|
         unless value =~ /^(https?:\/\/)?(\S*\:\S*\@)?(\S*)\.?(\S*)\.?(\w*):?(\d*)\/?(\S*)$/
-          raise(Puppet::Error, "Git webhook URL must be fully qualified, not '#{value}'")
+          raise(Puppet::Error, "Git integration URL must be fully qualified, not '#{value}'")
         end
       end
     end
@@ -46,7 +46,7 @@ module Puppet
     end
 
     newparam(:repo_name) do
-      desc 'The name of the repository associated with the webhook. Required. NOTE: Stash only.'
+      desc 'The name of the repository associated with the integration. Required. NOTE: Stash only.'
       munge do |value|
         String(value)
       end
@@ -67,25 +67,25 @@ module Puppet
     end
 
     newparam(:merge_request_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'The URL in the webhook_url parameter will be triggered when a merge request is created. Optional. NOTE: GitLab only'
+      desc 'The URL in the integration_url parameter will be triggered when a merge request is created. Optional. NOTE: GitLab only'
 
       defaultto false
     end
 
     newparam(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'The URL in the webhook_url parameter will be triggered when a tag push event occurs. Optional. NOTE: GitLab only'
+      desc 'The URL in the integration_url parameter will be triggered when a tag push event occurs. Optional. NOTE: GitLab only'
 
       defaultto false
     end
 
     newparam(:issue_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'The URL in the webhook_url parameter will be triggered when an issue event occurs. Optional. NOTE: GitLab only.'
+      desc 'The URL in the integration_url parameter will be triggered when an issue event occurs. Optional. NOTE: GitLab only.'
 
       defaultto false
     end
 
     newparam(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Boolean value for disabling SSL verification for this webhook. Optional. NOTE: GitHub only'
+      desc 'Boolean value for disabling SSL verification for this integration. Optional. NOTE: GitHub only'
 
       defaultto false
     end
