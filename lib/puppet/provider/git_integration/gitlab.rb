@@ -73,19 +73,19 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     project_id = get_project_id
 
     integration_hash = Hash.new
-    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks"
+    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/hangouts-chat"
 
     response = api_call('GET', url)
 
     integration_json = JSON.parse(response.body)
 
-    integration_json.each do |child|
-      integration_hash[child['url']] = child['id']
-    end
+    #integration_json.each do |child|
+    #  integration_hash[child['url']] = child['id']
+    #end
 
     integration_hash.keys.each do |k|
-      if k.eql?(resource[:integration_url].strip)
-        Puppet.debug "gitlab_integration::#{calling_method}: Webhook already exists as specified in calling resource block."
+      if integration_json['active'].eql?(resource[:integration_url].strip)
+        Puppet.debug "gitlab_integration::#{calling_method}: Integrations is already active as specified in calling resource block."
         return true
       end
     end
@@ -142,7 +142,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def create
     project_id = get_project_id
 
-    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks"
+    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/hangouts-chat"
 
     begin
       opts = { 'url' => resource[:integration_url].strip }
@@ -185,7 +185,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration_id = get_integration_id
 
     unless integration_id.nil?
-      url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/hooks/#{integration_id}"
+      url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/hangouts-chat"
 
       begin
         response = api_call('DELETE', url)
