@@ -15,7 +15,18 @@ module Puppet
 
     newparam(:name, :namevar => true) do
       desc 'A unique title for the key that will be provided to the prefered Git management system. Required.'
+      newvalues(:apple_app_store, :asana, :assembla, :bamboo, :bugzilla, :buildkite, :campfire, :datadog, :'unify-circuit', :pumble, :'webex-teams', :'custom-issue-tracker', :discord, :'drone-ci', :'emails-on-push', :ewm, :confluence, :shimo, :'external-wiki', :github, :'hangouts-chat', :irker, :jira, :'slack-slash-commands', :'mattermost-slash-commands', :packagist, :'pipelines-email', :pivotaltracker, :prometheus, :pushover, :redmine, :slack, :'microsoft-teams', :mattermost, :teamcity, :jenkins, :'jenkins-deprecated', :'mock-ci', :'squash-tm', :youtrack)
     end
+
+#		case self[:ensure]
+#    when 'hangouts-chat'
+#      newparam(:confidential_issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#        desc 'Enable notifications for confidential issue events.'
+#        defaultto false
+#      end
+#    else
+#      raise(Puppet::Error, "'#{name}' is not yet configured.")
+#    end
 
     newparam(:webhook) do
       desc 'The Hangouts Chat webhook. For example, https://chat.googleapis.com/v1/spaces...  Required. NOTE: GitLab only.'
@@ -81,6 +92,7 @@ module Puppet
       desc 'Enable notifications for merge request events.'
       defaultto false
     end
+
 
     newparam(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for tag push events.'
