@@ -5,8 +5,7 @@ module Puppet
   Puppet::Type.newtype(:git_integration) do
     include PuppetX::GMS::Type
 
-    @doc = %q{TODO
-    }
+    @doc = "Create a Google Chat hook in Gitlab."
 
     ensurable do
       defaultvalues
@@ -17,16 +16,6 @@ module Puppet
       desc 'A unique title for the key that will be provided to the prefered Git management system. Required.'
       newvalues(:apple_app_store, :asana, :assembla, :bamboo, :bugzilla, :buildkite, :campfire, :datadog, :'unify-circuit', :pumble, :'webex-teams', :'custom-issue-tracker', :discord, :'drone-ci', :'emails-on-push', :ewm, :confluence, :shimo, :'external-wiki', :github, :'hangouts-chat', :irker, :jira, :'slack-slash-commands', :'mattermost-slash-commands', :packagist, :'pipelines-email', :pivotaltracker, :prometheus, :pushover, :redmine, :slack, :'microsoft-teams', :mattermost, :teamcity, :jenkins, :'jenkins-deprecated', :'mock-ci', :'squash-tm', :youtrack)
     end
-
-#		case self[:ensure]
-#    when 'hangouts-chat'
-#      newparam(:confidential_issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-#        desc 'Enable notifications for confidential issue events.'
-#        defaultto false
-#      end
-#    else
-#      raise(Puppet::Error, "'#{name}' is not yet configured.")
-#    end
 
     newparam(:webhook) do
       desc 'The Hangouts Chat webhook. For example, https://chat.googleapis.com/v1/spaces...  Required. NOTE: GitLab only.'
@@ -58,50 +47,48 @@ module Puppet
 
     newparam(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Send notifications for broken pipelines.'
-      defaultto false
+      defaultto (:false)
     end
 
     newparam(:notify_only_default_branch, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'DEPRECATED: This parameter has been replaced with branches_to_be_notified.'
-      defaultto false
+      defaultto (false)
     end
 
     newparam(:branches_to_be_notified) do
       desc 'Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default value is “default”.'
-      munge do |value|
-        String(value)
-      end
+      newvalues(:all, :default, :protected, :default_and_protected)
+      defaultto :default
     end
 
     newparam(:push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for push events.'
-      defaultto false
+      defaultto (false)
     end
 
     newparam(:issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for issue events.'
-      defaultto false
+      defaultto (false)
     end
 
     newparam(:confidential_issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for confidential issue events.'
-      defaultto false
+      defaultto (false)
     end
 
     newparam(:merge_requests_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for merge request events.'
-      defaultto false
+      defaultto (false)
     end
-
 
     newparam(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for tag push events.'
-      defaultto false
+      defaultto (false)
     end
 
     newparam(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for note events.'
-      defaultto false
+      defaultto :false
     end
 
     newparam(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
@@ -121,7 +108,6 @@ module Puppet
 
     newparam(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Boolean value for disabling SSL verification for this webhook. Optional. NOTE: GitHub only'
-
       defaultto false
     end
 

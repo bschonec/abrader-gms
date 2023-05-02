@@ -80,11 +80,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration_json = JSON.parse(response.body)
 
     if integration_json['active'] == true
-      Puppet.debug "gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
+      Puppet.debug "gitlab_integration::#{calling_method}: OOOOOOOOOOOOOOOOOOOO Gitlab Integration already exists."
       return true
     end
 
-    Puppet.debug "gitlab_integration::#{calling_method}: Integration is not currently active as specified in calling resource block."
+    Puppet.debug "gitlab_integration::#{calling_method}: PPPPPPPPPPPPPPPPPPPP Gitlab Integration doesn't exist."
     return false
   end
 
@@ -136,6 +136,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     begin
+
+      # Build the hash of parameters we're going to send to the Gitlab Integrations API.
       opts = { 'webhook' => resource[:webhook].strip }
 
       if resource.disable_ssl_verify?
@@ -146,12 +148,12 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
         end
       end
 
-      if resource.notify_only_default_branch?
-        opts['notify_only_default_branch'] = resource[:notify_only_default_branch]
-      end
-
-      if resource.branches_to_be_notified?
         opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
+
+        opts['notify_only_broken_pipelines'] = resource[:notify_only_broken_pipelines]
+
+      if resource.push_events?
+        opts['push_events'] = resource[:push_events]
       end
 
       if resource.tag_push_events?
@@ -179,10 +181,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       if (response.class == Net::HTTPOK)
         return true
       else
-        raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{response.inspect}")
+        raise(Puppet::Error, "XXXXXX gitlab_integration::#{calling_method}: #{response.inspect}")
       end
     rescue Exception => e
-      raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
+      raise(Puppet::Error, "YYYYYYYY gitlab_integration::#{calling_method}: #{e.message} #{e}")
     end
   end
 
