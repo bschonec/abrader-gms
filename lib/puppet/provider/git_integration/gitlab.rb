@@ -120,7 +120,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   end
 
-  def get_integration_id
+  def get_integration_ids
     project_id = get_project_id
 
     integration_hash = Hash.new
