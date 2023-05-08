@@ -215,4 +215,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def notify_only_broken_pipelines
     return false
   end
+
+  def notify_only_broken_pipelines=(value)
+    return 54321
+  end
 end
