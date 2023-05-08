@@ -147,34 +147,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       opts = { 'webhook' => resource[:webhook].strip }
 
 
-#      if resource.notify_only_default_branch?
-#        opts['notify_only_default_branch'] = resource[:notify_only_default_branch]
-#      end
-
-      #if resource.branches_to_be_notified
-      #  opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
-      #end
-
-#      if resource.tag_push_events?
-#        opts['tag_push_events'] = resource[:tag_push_events]
-#      end
-#
-#      if resource.note_events?
-#        opts['note_events'] = resource[:note_events]
-#      end
-#
-#      if resource.merge_requests_events?
-#        opts['merge_requests_events'] = resource[:merge_requests_events]
-#      end
-#
-      if resource.issues_events?
-        opts['issues_events'] = resource[:issues_events]
-      end
-
-#      if resource.confidential_issues_events?
-#        opts['confidential_issues_events'] = resource[:confidential_issues_events]
-#      end
-
       response = api_call('PUT', url, opts)
 
       if (response.class == Net::HTTPOK)
