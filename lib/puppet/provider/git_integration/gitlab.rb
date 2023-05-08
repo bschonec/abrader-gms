@@ -145,7 +145,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
-      opts['issues_events'] = true
+      opts['issues_events'] = resource[:issues_events]
 
       response = api_call('PUT', url, opts)
 
