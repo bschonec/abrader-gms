@@ -73,17 +73,17 @@ module Puppet
 
     newproperty(:confidential_issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for confidential issue events.'
-      defaultto (false)
+      defaultto (:false)
     end
 
     newproperty(:merge_requests_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for merge request events.'
-      defaultto (false)
+      defaultto (:false)
     end
 
     newproperty(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for tag push events.'
-      defaultto (false)
+      defaultto (:false)
     end
 
 #    newproperty(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
