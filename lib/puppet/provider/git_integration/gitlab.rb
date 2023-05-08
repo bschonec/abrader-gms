@@ -147,10 +147,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       #  opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
       #end
 
-      if resource.push_events?
-        opts['push_events'] = resource[:push_events]
-      end
-
 #      if resource.tag_push_events?
 #        opts['tag_push_events'] = resource[:tag_push_events]
 #      end
@@ -196,6 +192,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
         raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
       end
 
+  end
+
+  def push_events=(value)
+        opts['push_events'] = value
   end
 
   def disable_ssl_verify
