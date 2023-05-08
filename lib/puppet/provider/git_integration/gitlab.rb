@@ -6,7 +6,7 @@ require 'puppet_x/gms/provider'
 Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
 
-  defaultfor :gitlab => :exists
+  #defaultfor :gitlab => :exists
 
   def self.instances
     
