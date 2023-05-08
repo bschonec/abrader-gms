@@ -8,33 +8,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   defaultfor :gitlab => :exists
 
-  def self.prefetch(resources)
-
-    Puppet.debug("Hello, world!")
-    packages = instances
-
-  end
-
-  def self.instances
-
-    project_id = get_project_id
-
-    integration_hash = Hash.new
-    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
-
-    response = api_call('GET', url)
-
-    integration_json = JSON.parse(response.body)
-
-    if integration_json['active'] == true
-      Puppet.debug "XXXX gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
-      new( :name => :name,
-           :ensure => :present
-         )
-    end
-
-  end
-
   # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
   # otherwise return https://gitlab.com.
   def gms_server
