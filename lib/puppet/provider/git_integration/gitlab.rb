@@ -225,6 +225,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     opts['branches_to_be_notified'] = value
   end
 
+#  def issues_events
+#    return resource[:issues_events]
+#  end
+
   def issues_events=(value)
     opts['issues_events'] = value
     Puppet.debug("XXX: issues_events = #{value} #{resource[:issues_events]}.") 
