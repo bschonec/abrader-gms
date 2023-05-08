@@ -145,6 +145,15 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
+
+      if resource.disable_ssl_verify?
+        if resource[:disable_ssl_verify] == true
+          opts['enable_ssl_verification'] = 'false'
+        else
+          opts['enable_ssl_verification'] = 'true'
+        end
+      end
+
       opts['issues_events'] = resource[:issues_events]
       opts['push_events'] = resource[:push_events]
       opts['confidential_issues_events'] = resource[:confidential_issues_events]
