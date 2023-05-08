@@ -128,5 +128,5 @@ module Puppet
     validate do
       validate_token_or_token_file
     end
-
+  end
 end
