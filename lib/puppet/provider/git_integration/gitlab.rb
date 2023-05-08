@@ -162,9 +162,9 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 #        opts['merge_requests_events'] = resource[:merge_requests_events]
 #      end
 #
-#      if resource.confidential_issues_events?
-#        opts['confidential_issues_events'] = resource[:confidential_issues_events]
-#      end
+      if resource.confidential_issues_events?
+        opts['confidential_issues_events'] = resource[:confidential_issues_events]
+      end
 
       response = api_call('PUT', url, opts)
 
