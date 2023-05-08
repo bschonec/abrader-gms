@@ -134,7 +134,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def create
     project_id = get_project_id
-    Puppet.debug("XXX: issues_events = #{value} #{resource[:issues_events]}.") 
+    Puppet.debug("XXX: issues_events = #{resource[:issues_events]}.") 
 
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
