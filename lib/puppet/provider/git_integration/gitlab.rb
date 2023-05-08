@@ -212,4 +212,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("XXX: issues_events = #{value} #{resource[:issues_events]}.") 
   end
 
+  def notify_only_broken_pipelines
+    return false
+  end
 end
