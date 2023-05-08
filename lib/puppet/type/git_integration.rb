@@ -50,7 +50,7 @@ module Puppet
       defaultto (false)
     end
 
-    property(:notify_only_default_branch, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:notify_only_default_branch, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'DEPRECATED: This parameter has been replaced with branches_to_be_notified.'
       defaultto (false)
     end
@@ -61,7 +61,7 @@ module Puppet
       defaultto :default
     end
 
-    property(:push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for push events.'
       defaultto (false)
     end
@@ -81,32 +81,32 @@ module Puppet
       defaultto (false)
     end
 
-    property(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for tag push events.'
       defaultto (false)
     end
 
-    property(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for note events.'
       defaultto false
     end
 
-    property(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for confidential note events.'
       defaultto false
     end
 
-    property(:pipeline_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:pipeline_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for pipeline events.'
       defaultto false
     end
 
-    property(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for wiki page events.'
       defaultto false
     end
 
-    property(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Boolean value for disabling SSL verification for this webhook. Optional. NOTE: GitHub only'
       defaultto false
     end
