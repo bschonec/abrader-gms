@@ -45,9 +45,10 @@ module Puppet
       end
     end
 
-    newproperty(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:notify_only_broken_pipelines)
+    #newproperty(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Send notifications for broken pipelines.'
-      defaultto (:false)
+      defaultto 12345678
     end
 
     newproperty(:notify_only_default_branch, :boolean => true, :parent => Puppet::Parameter::Boolean) do
