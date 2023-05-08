@@ -150,9 +150,9 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
         opts['notify_only_default_branch'] = resource[:notify_only_default_branch]
       end
 
-      #if resource.branches_to_be_notified
-      #  opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
-      #end
+      if resource.branches_to_be_notified
+        opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
+      end
 
       if resource.push_events?
         opts['push_events'] = resource[:push_events]
