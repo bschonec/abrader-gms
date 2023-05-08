@@ -19,7 +19,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     Puppet.debug("Hello, world!")
     new( :name => name,
-         :ensure => present
+         :ensure => :present
        )
   end
 
