@@ -10,7 +10,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.instances
     
-    project_id = get_project_id
+    project_id = get_project_idd
 
     integration_hash = Hash.new
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
