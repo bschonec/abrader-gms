@@ -93,7 +93,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def exists?
 
-    Puppet.debug("@property_hash[:ensure] = #{@property_hash[:ensure]}.")
+    Puppet.debug("@property_hash[:ensure] = #{property_hash[:ensure]}.")
     # The self.instances will initialize first and if the Google Chat integration is enabled, we'll return :present 
     @property_hash[:ensure] == :present  # does :ensure equal present?
 
