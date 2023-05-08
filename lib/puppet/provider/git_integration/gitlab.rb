@@ -216,6 +216,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def issues_events=(value)
     opts['issues_events'] = value
+    Puppet.debug("issues_events = #{value} #{resource[:issues_events]}.")
   end
 
 end
