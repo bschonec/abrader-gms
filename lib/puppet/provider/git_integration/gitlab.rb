@@ -10,7 +10,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.instances
     
-    project_id = get_project_idd
+    project_id = get_project_id
 
     integration_hash = Hash.new
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
@@ -21,11 +21,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     if integration_json['active'] == true
       Puppet.debug "gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
-      return true
+      new( :name => :name,
+           :ensure => present
+         )
     end
-
-    Puppet.debug "gitlab_integration::#{calling_method}: Integration is not currently active as specified in calling resource block."
-    return false
 
   end
 
