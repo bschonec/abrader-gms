@@ -138,13 +138,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     begin
       opts = { 'webhook' => resource[:webhook].strip }
 
-      if resource.disable_ssl_verify?
-        if resource[:disable_ssl_verify] == true
-          opts['enable_ssl_verification'] = 'false'
-        else
-          opts['enable_ssl_verification'] = 'true'
-        end
-      end
 
       if resource.notify_only_default_branch?
         opts['notify_only_default_branch'] = resource[:notify_only_default_branch]
@@ -209,6 +202,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def disable_ssl_verify=(value)
+        if resource[:disable_ssl_verify] == true
+          opts['enable_ssl_verification'] = 'false'
+        else
+          opts['enable_ssl_verification'] = 'true'
+        end
   end
 
   def branches_to_be_notified
