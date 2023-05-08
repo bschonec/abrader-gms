@@ -8,7 +8,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   #defaultfor :gitlab => :exists
 
-  def slf.instances
+  def self.show
+
+    Puppet.debug("Hello, world!")
+
+  end
+
+  def self.instances
 
     project_id = get_project_id
 
