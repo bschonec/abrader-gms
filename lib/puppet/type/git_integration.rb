@@ -55,10 +55,10 @@ module Puppet
       defaultto (false)
     end
 
-    newparam(:branches_to_be_notified) do
+    newproperty(:branches_to_be_notified) do
       desc 'Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default value is “default”.'
       newvalues(:all, :default, :protected, :default_and_protected)
-      defaultto (default)
+      defaultto :default
     end
 
     newparam(:push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
