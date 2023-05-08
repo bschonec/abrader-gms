@@ -8,7 +8,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   defaultfor :gitlab => :exists
 
-  def self.prefetch
+  def self.prefetch(resources)
 
     Puppet.debug("Hello, world!")
 
