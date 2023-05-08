@@ -63,12 +63,12 @@ module Puppet
 
     newproperty(:push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for push events.'
-      defaultto (:false)
+      defaultto (:true)
     end
 
     newproperty(:issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for issue events.'
-      defaultto (:false)
+      defaultto (:true)
     end
 
 #    newproperty(:confidential_issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
