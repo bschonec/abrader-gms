@@ -17,14 +17,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.instances
 
-    Puppet.debug("Hello, world!")
-    new( :name => name,
-         :ensure => :present
-       )
-  end
-
-  def self.instancesd
-
     project_id = get_project_id
 
     integration_hash = Hash.new
