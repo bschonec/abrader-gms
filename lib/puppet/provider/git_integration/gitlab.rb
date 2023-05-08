@@ -148,6 +148,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
       opts['confidential_issues_events'] = resource[:confidential_issues_events]
       opts['notify_only_broken_pipelines'] = resource[:notify_only_broken_pipelines]
+      opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
       opts['confidential_note_events'] = resource[:confidential_note_events]
       opts['issues_events'] = resource[:issues_events]
       opts['merge_requests_events'] = resource[:merge_requests_events]
