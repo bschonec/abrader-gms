@@ -205,6 +205,12 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   end
 
+  def disable_ssl_verify
+  end
+
+  def disable_ssl_verify=(value)
+  end
+
   def branches_to_be_notified
   end
 
