@@ -5,8 +5,6 @@ module Puppet
   Puppet::Type.newtype(:git_integration) do
     include PuppetX::GMS::Type
 
-    @doc = "Create a Google Chat hook in Gitlab."
-
     ensurable do
       defaultvalues
       defaultto :present
@@ -45,8 +43,7 @@ module Puppet
       end
     end
 
-    newproperty(:notify_only_broken_pipelines)
-    #newproperty(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Send notifications for broken pipelines.'
       #defaultto 12345678
     end
