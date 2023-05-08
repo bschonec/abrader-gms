@@ -153,7 +153,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       opts['tag_push_events'] = resource[:tag_push_events]
       opts['note_events'] = resource[:note_events]
       opts['confidential_note_events'] = resource[:confidential_note_events]
-      #opts['pipeline_events'] = resource[:pipeline_events]
+      opts['pipeline_events'] = resource[:pipeline_events]
       #opts['wiki_page_events'] = resource[:wiki_page_events]
 
       response = api_call('PUT', url, opts)
