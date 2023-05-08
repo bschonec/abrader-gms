@@ -22,7 +22,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       new(:name => name,
           :ensure => :present
       )
-      Puppet.debug "gitlab_integration::#{calling_method}: Integrations active: #{integration_json}."
+      Puppet.debug "XXX gitlab_integration::#{calling_method}: Integrations active: #{integration_json}."
     end
 
   end
