@@ -8,9 +8,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   #defaultfor :gitlab => :exists
 
-  def self.instances
+  def slf.instances
 
-pusdf.asdf    
     project_id = get_project_id
 
     integration_hash = Hash.new
