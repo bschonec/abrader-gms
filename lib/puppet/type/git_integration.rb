@@ -98,17 +98,17 @@ module Puppet
 
     newproperty(:pipeline_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for pipeline events.'
-      defaultto false
+      defaultto (:false)
     end
 
     newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for wiki page events.'
-      defaultto false
+      defaultto (:false)
     end
 
     newproperty(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Boolean value for disabling SSL verification for this webhook. Optional. NOTE: GitHub only'
-      defaultto false
+      defaultto (:false)
     end
 
     newparam(:server_url) do
