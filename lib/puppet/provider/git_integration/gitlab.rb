@@ -209,4 +209,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   end
 
+  def branches_to_be_notified
+  end
+
+  def branches_to_be_notified=(value)
+  end
+
 end
