@@ -15,6 +15,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     response = api_call('GET', url)
+    Puppet.debug "XXX gitlab_integration::#{calling_method}: Integrations active: #{integration_json}."
 
     integration_json = JSON.parse(response.body)
 
@@ -22,7 +23,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       new(:name => name,
           :ensure => :present
       )
-      Puppet.debug "XXX gitlab_integration::#{calling_method}: Integrations active: #{integration_json}."
     end
 
   end
