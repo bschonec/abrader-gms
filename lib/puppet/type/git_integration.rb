@@ -45,21 +45,21 @@ module Puppet
       end
     end
 
-    newproperty(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Send notifications for broken pipelines.'
-      defaultto (false)
-    end
-
-    newproperty(:notify_only_default_branch, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'DEPRECATED: This parameter has been replaced with branches_to_be_notified.'
-      defaultto (false)
-    end
-
-    newproperty(:branches_to_be_notified) do
-      desc 'Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default value is “default”.'
-      newvalues(:all, :default, :protected, :default_and_protected)
-      defaultto :default
-    end
+#    newproperty(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Send notifications for broken pipelines.'
+#      defaultto (false)
+#    end
+#
+#    newproperty(:notify_only_default_branch, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'DEPRECATED: This parameter has been replaced with branches_to_be_notified.'
+#      defaultto (false)
+#    end
+#
+#    newproperty(:branches_to_be_notified) do
+#      desc 'Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default value is “default”.'
+#      newvalues(:all, :default, :protected, :default_and_protected)
+#      defaultto :default
+#    end
 
     newproperty(:push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Enable notifications for push events.'
@@ -71,45 +71,45 @@ module Puppet
       defaultto (:false)
     end
 
-    newproperty(:confidential_issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for confidential issue events.'
-      defaultto (false)
-    end
-
-    newproperty(:merge_requests_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for merge request events.'
-      defaultto (false)
-    end
-
-    newproperty(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for tag push events.'
-      defaultto (false)
-    end
-
-    newproperty(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for note events.'
-      defaultto false
-    end
-
-    newproperty(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for confidential note events.'
-      defaultto false
-    end
-
-    newproperty(:pipeline_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for pipeline events.'
-      defaultto false
-    end
-
-    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for wiki page events.'
-      defaultto false
-    end
-
-    newproperty(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Boolean value for disabling SSL verification for this webhook. Optional. NOTE: GitHub only'
-      defaultto false
-    end
+#    newproperty(:confidential_issues_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for confidential issue events.'
+#      defaultto (false)
+#    end
+#
+#    newproperty(:merge_requests_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for merge request events.'
+#      defaultto (false)
+#    end
+#
+#    newproperty(:tag_push_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for tag push events.'
+#      defaultto (false)
+#    end
+#
+#    newproperty(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for note events.'
+#      defaultto false
+#    end
+#
+#    newproperty(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for confidential note events.'
+#      defaultto false
+#    end
+#
+#    newproperty(:pipeline_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for pipeline events.'
+#      defaultto false
+#    end
+#
+#    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for wiki page events.'
+#      defaultto false
+#    end
+#
+#    newproperty(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Boolean value for disabling SSL verification for this webhook. Optional. NOTE: GitHub only'
+#      defaultto false
+#    end
 
     newparam(:server_url) do
       desc 'The URL path to the Git management system server. Required.'
