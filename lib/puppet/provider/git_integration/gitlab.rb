@@ -20,7 +20,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration_json = JSON.parse(response.body)
 
     if integration_json['active'] == true
-      Puppet.debug "gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
+      Puppet.debug "XXXX gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
       new( :name => :name,
            :ensure => present
          )
