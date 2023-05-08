@@ -11,13 +11,16 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def self.prefetch(resources)
 
     Puppet.debug("Hello, world!")
+    packages = instances
 
   end
 
   def self.instances
 
     Puppet.debug("Hello, world!")
-
+    new( :name => name,
+         :ensure => present
+       )
   end
 
   def self.instancesd
