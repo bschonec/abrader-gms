@@ -8,6 +8,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   defaultfor :gitlab => :exists
 
+  # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
+  # otherwise return https://gitlab.com.
   def gms_server
     return resource[:server_url].strip unless resource[:server_url].nil?
     return 'https://gitlab.com'
@@ -194,11 +196,17 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   end
 
+  def push_events
+    return resource[:push_events]
+  end
+
   def push_events=(value)
-        opts['push_events'] = value
+    opts['push_events'] = value
+    Puppet.debug("XXX: push_events = #{value} #{resource[:push_events]}.") 
   end
 
   def disable_ssl_verify
+    return resource[:disable_ssl_verify]
   end
 
   def disable_ssl_verify=(value)
