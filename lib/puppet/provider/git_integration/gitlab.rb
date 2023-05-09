@@ -19,6 +19,14 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     return resource[:gitlab_api_version]
   end
 
+  def branches_to_be_notified
+    return resource[:branches_to_be_notified]
+  end
+
+  def branches_to_be_notified=(value)
+    opts['branches_to_be_notified'] = value
+  end
+
   def calling_method
     # Get calling method and clean it up for good reporting
     cm = String.new
@@ -203,14 +211,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def push_events=(value)
     opts['push_events'] = value
     Puppet.debug("XXX: push_events = #{value} #{resource[:push_events]}.") 
-  end
-
-  def branches_to_be_notified
-    return resource[:branches_to_be_notified]
-  end
-
-  def branches_to_be_notified=(value)
-    opts['branches_to_be_notified'] = value
   end
 
   def issues_events
