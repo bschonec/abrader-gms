@@ -161,7 +161,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       #opts['wiki_page_events'] = resource[:wiki_page_events]
 
       response = api_call('PUT', url, opts)
-      Puppet.debug("YYY: response = = #{response}.") 
+      Puppet.debug("YYY: response = = #{response.class}.") 
 
       if (response.class == Net::HTTPOK)
         return true
