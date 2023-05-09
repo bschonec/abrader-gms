@@ -294,4 +294,5 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def wiki_page_events=(value)
     istrue
   end
+
 end
