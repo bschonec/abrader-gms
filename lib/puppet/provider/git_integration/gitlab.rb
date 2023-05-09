@@ -85,7 +85,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     if integration_json['active'] == true
       Puppet.debug "gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
-    Puppet.debug("XXX: exiting exists_helper method.")
+      Puppet.debug("XXX: exiting exists_helper method.")
       return true
     end
 
@@ -100,12 +100,15 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def get_project_id
+
+    Puppet.debug("XXX: Entering get_project_id method.")
     return resource[:project_id].to_i unless resource[:project_id].nil?
 
     if resource[:project_name].nil?
       raise(Puppet::Error, "gitlab_integration::#{calling_method}: Must provide at least one of the following attributes: project_id or project_name")
     end
 
+    # Use an API call to the project's *name* so that we can find out what its ID is.
     project_name = resource[:project_name].strip.gsub('/','%2F')
 
     url = "#{gms_server}/api/#{api_version}/projects/#{project_name}"
@@ -113,7 +116,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     begin
       response = api_call('GET', url)
       return JSON.parse(response.body)['id'].to_i
-    Puppet.debug("XXX: exiting exists method.")
     rescue Exception => e
       fail(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
       return nil
