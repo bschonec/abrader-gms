@@ -266,6 +266,38 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def merge_requests_events=(value)
     return 'this is the SETter value.'
   end
+
+  def note_events
+    return 'this is the getTER value'
+  end
+
+  def note_events=(value)
+    return 'this is the SETter value.'
+  end
+
+  def pipeline_events
+    return 'this is the getTER value'
+  end
+
+  def pipeline_events=(value)
+    return 'this is the SETter value.'
+  end
+
+  def confidential_note_events 
+    return 'this is the getTER value'
+  end
+
+  def confidential_note_events=(value)
+    return 'this is the SETter value.'
+  end
+
+  def wiki_page_events 
+    return 'this is the getTER value'
+  end
+
+  def wiki_page_events=(value)
+    return 'this is the SETter value.'
+  end
 end
 #type/git_integration.rb:    newproperty(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
 #type/git_integration.rb:    newproperty(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
