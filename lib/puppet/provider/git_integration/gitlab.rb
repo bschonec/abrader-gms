@@ -213,10 +213,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_broken_pipelines
-    return false
+    return 'this is the getter value'
   end
 
   def notify_only_broken_pipelines=(value)
-    return 54321
+    return 'this is the SETter value.'
   end
 end
