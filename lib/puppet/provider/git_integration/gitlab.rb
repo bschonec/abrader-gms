@@ -73,9 +73,22 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def exists?
 
-    Puppet.debug("@property_hash[:ensure] = #{@property_hash[:ensure]}.")
-    # The self.instances will initialize first and if the Google Chat integration is enabled, we'll return :present 
-    @property_hash[:ensure] == :present  # does :ensure equal present?
+    project_id = get_project_id
+
+    integration_hash = Hash.new
+    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
+
+    response = api_call('GET', url)
+
+    integration_json = JSON.parse(response.body)
+
+    if integration_json['active'] == true
+      Puppet.debug "gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
+      return true
+    end
+
+    Puppet.debug "gitlab_integration::#{calling_method}: Integration is not currently active as specified in calling resource block."
+    return false
 
   end
 
