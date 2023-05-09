@@ -247,10 +247,12 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_issues_events
+    Puppet.debug('confidential_issues_events GETTR.')
     return resource[:confidential_issues_events]
   end
 
   def confidential_issues_events=(value)
+    Puppet.debug('confidential_issues_events SETTR.')
     opts['confidential_issues_events'] = value
   end
 
