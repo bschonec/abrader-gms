@@ -141,8 +141,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def create
     project_id = get_project_id
-    Puppet.debug("XXX: issues_events = #{resource[:issues_events]}.") 
 
+    Puppet.debug("I'll *create* #{resource[:notify_only_broken_pipelines]}.")
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     begin
@@ -170,7 +170,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     rescue Exception => e
       raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
     end
-  Puppet.debug("I'll *create* #{resource[:notify_only_broken_pipelines]}.")
   end
 
   def destroy
