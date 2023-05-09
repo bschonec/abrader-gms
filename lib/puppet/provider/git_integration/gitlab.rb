@@ -149,8 +149,9 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     begin
       opts = { 'webhook' => resource[:webhook].strip }
 
-      if resource
-        opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
+      resource.each do |x|
+        Puppet.debug("ZZ = #{x}.")
+#opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
       end
       opts['confidential_issues_events'] = resource[:confidential_issues_events]
       opts['confidential_note_events'] = resource[:confidential_note_events]
