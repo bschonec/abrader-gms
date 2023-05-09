@@ -73,6 +73,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def exists_helper()
 
+    Puppet.debug("XXX: entering exists_helper method.")
     project_id = get_project_id
 
     integration_hash = Hash.new
@@ -84,10 +85,12 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     if integration_json['active'] == true
       Puppet.debug "gitlab_integration::#{calling_method}: Integration is already active as specified in calling resource block."
+    Puppet.debug("XXX: exiting exists_helper method.")
       return true
     end
 
     Puppet.debug "gitlab_integration::#{calling_method}: Integration is not currently active as specified in calling resource block."
+    Puppet.debug("XXX: exiting exists_helper method.")
     return false
 
   end
@@ -95,7 +98,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def exists?
     Puppet.debug("XXX: entering exists method.")
     exists_helper
-    Puppet.debug("XXX: exit exists method.")
   end
 
   def get_project_id
