@@ -93,6 +93,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
+    Puppet.debug "XXX #{exists_helper}."
     exists_helper != false
   end
 
