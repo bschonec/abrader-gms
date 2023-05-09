@@ -95,6 +95,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def exists?
     Puppet.debug("XXX: entering exists method.")
     exists_helper
+    Puppet.debug("XXX: exit exists method.")
   end
 
   def get_project_id
