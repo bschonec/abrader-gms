@@ -71,7 +71,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     response
   end
 
-  def exists?
+  def exists_helper()
 
     project_id = get_project_id
 
@@ -90,7 +90,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug "gitlab_integration::#{calling_method}: Integration is not currently active as specified in calling resource block."
     return false
 
+  end
 
+  def exists?
+    exists_helper
   end
 
   def get_project_id
