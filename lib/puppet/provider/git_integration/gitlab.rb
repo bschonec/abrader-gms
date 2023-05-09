@@ -287,11 +287,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 #    true
 #  end
 
-  def wiki_page_events 
-    false
-  end
-
-  def wiki_page_events=(value)
-    true
-  end
+#  def wiki_page_events 
+#    false
+#  end
+#
+#  def wiki_page_events=(value)
+#    true
+#  end
 end
