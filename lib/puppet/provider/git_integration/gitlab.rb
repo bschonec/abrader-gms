@@ -228,7 +228,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_default_branch
-    return 'this is the getter value'
+    return 'this is the GETter value'
   end
 
   def notify_only_default_branch=(value)
@@ -236,7 +236,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_broken_pipelines
-    return 'this is the getter value'
+    return 'this is the getTER value'
   end
 
   def notify_only_broken_pipelines=(value)
