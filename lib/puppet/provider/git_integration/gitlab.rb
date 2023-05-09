@@ -93,8 +93,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
-    Puppet.debug("XXX: exists method.")
-    Puppet.debug "XXX exists = #{exists_helper}."
+    Puppet.debug("XXX: entering exists method.")
     exists_helper
   end
 
@@ -112,6 +111,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     begin
       response = api_call('GET', url)
       return JSON.parse(response.body)['id'].to_i
+    Puppet.debug("XXX: exiting exists method.")
     rescue Exception => e
       fail(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
       return nil
@@ -143,7 +143,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def create
     project_id = get_project_id
 
-    Puppet.debug("XXX: Create method.")
+    Puppet.debug("XXX: enter CREATE method.")
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     begin
@@ -164,6 +164,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
       response = api_call('PUT', url, opts)
 
+    Puppet.debug("XXX: enter CREATE method.")
       if (response.class == Net::HTTPOK)
         return true
       else
@@ -199,7 +200,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def push_events=(value)
-    Puppet.debug("XXX: push_events = #{value} #{resource[:push_events]}.") 
     true
   end
 
