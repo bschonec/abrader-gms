@@ -247,11 +247,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_issues_events
-    return 'this is the getTER value'
+    return resource[:confidential_issues_events]
   end
 
   def confidential_issues_events=(value)
-    return 'this is the SETter value.'
+    return resource[:confidential_issues_events]
   end
 
   def tag_push_events
