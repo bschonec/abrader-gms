@@ -153,17 +153,17 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     begin
       opts = { 'webhook' => resource[:webhook].strip }
 
-      opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
-      opts['confidential_issues_events'] = resource[:confidential_issues_events]
-      opts['confidential_note_events'] = resource[:confidential_note_events]
-      opts['issues_events'] = resource[:issues_events]
-      opts['merge_requests_events'] = resource[:merge_requests_events]
-      opts['note_events'] = resource[:note_events]
-      opts['notify_only_broken_pipelines'] = resource[:notify_only_broken_pipelines]
-      opts['notify_only_default_branch'] = resource[:notify_only_default_branch]
-      opts['pipeline_events'] = resource[:pipeline_events]
-      opts['push_events'] = resource[:push_events]
-      opts['tag_push_events'] = resource[:tag_push_events]
+      #opts['branches_to_be_notified'] = resource[:branches_to_be_notified]
+      #opts['confidential_issues_events'] = resource[:confidential_issues_events]
+      #opts['confidential_note_events'] = resource[:confidential_note_events]
+      #opts['issues_events'] = resource[:issues_events]
+      #opts['merge_requests_events'] = resource[:merge_requests_events]
+      #opts['note_events'] = resource[:note_events]
+      #opts['notify_only_broken_pipelines'] = resource[:notify_only_broken_pipelines]
+      #opts['notify_only_default_branch'] = resource[:notify_only_default_branch]
+      #opts['pipeline_events'] = resource[:pipeline_events]
+      #opts['push_events'] = resource[:push_events]
+      #opts['tag_push_events'] = resource[:tag_push_events]
       opts['wiki_page_events'] = resource[:wiki_page_events]
 
       response = api_call('PUT', url, opts)
