@@ -139,7 +139,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     return nil
   end
 
-  def create
+  def create(int)
     project_id = get_project_id
 
     Puppet.debug("I'll *create* #{resource[:notify_only_broken_pipelines]}.")
@@ -246,6 +246,15 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     return 'this is the SETter value.'
   end
 
+  def confidential_issues_events
+    Puppet.debug('XXX confidential_issues_events GETTR.')
+    true
+  end
+
+  def confidential_issues_events=(value)
+    Puppet.debug('XXX confidential_issues_events SETTR.')
+    opts['confidential_issues_events'] = value
+  end
 
   def tag_push_events
     return 'this is the getTER value'
