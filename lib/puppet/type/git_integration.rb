@@ -99,10 +99,10 @@ module Puppet
 #      defaultto :false
 #    end
 
-    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for wiki page events.'
-      defaultto :false
-    end
+#    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#      desc 'Enable notifications for wiki page events.'
+#      defaultto :false
+#    end
 
     newparam(:server_url) do
       desc 'The URL path to the Git management system server. Required.'
