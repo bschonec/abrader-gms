@@ -139,7 +139,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     return nil
   end
 
-  def create(int)
+  def create
     project_id = get_project_id
 
     Puppet.debug("I'll *create* #{resource[:notify_only_broken_pipelines]}.")
