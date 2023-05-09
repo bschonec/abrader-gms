@@ -43,7 +43,7 @@ module Puppet
       end
     end
 
-    newparam(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    newproperty(:notify_only_broken_pipelines, :boolean => true, :parent => Puppet::Parameter::Boolean) do
       desc 'Send notifications for broken pipelines.'
       defaultto :false
     end
