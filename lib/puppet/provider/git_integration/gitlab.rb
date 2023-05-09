@@ -248,7 +248,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def confidential_issues_events
     Puppet.debug('confidential_issues_events GETTR.')
-    return resource[:confidential_issues_events]
+    true
   end
 
   def confidential_issues_events=(value)
