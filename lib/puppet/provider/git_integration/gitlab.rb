@@ -5,7 +5,7 @@ require 'puppet_x/gms/provider'
 
 Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
-
+  commands: :istrue => 'true', :isfalse => 'false'
   defaultfor :gitlab => :exists
 
   # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
@@ -288,10 +288,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 #  end
 
   def wiki_page_events 
-    false
+    isfalse
   end
 
   def wiki_page_events=(value)
-    true
+    istrue
   end
 end
