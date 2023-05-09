@@ -246,15 +246,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     return 'this is the SETter value.'
   end
 
-  def confidential_issues_events
-    Puppet.debug('XXX confidential_issues_events GETTR.')
-    true
-  end
-
-  def confidential_issues_events=(value)
-    Puppet.debug('XXX confidential_issues_events SETTR.')
-    opts['confidential_issues_events'] = false
-  end
 
   def tag_push_events
     return 'this is the getTER value'
