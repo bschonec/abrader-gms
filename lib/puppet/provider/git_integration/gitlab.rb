@@ -247,13 +247,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_issues_events
-    Puppet.debug('confidential_issues_events GETTR.')
+    Puppet.debug('XXX confidential_issues_events GETTR.')
     true
   end
 
   def confidential_issues_events=(value)
-    Puppet.debug('confidential_issues_events SETTR.')
-    opts['confidential_issues_events'] = value
+    Puppet.debug('XXX confidential_issues_events SETTR.')
+    opts['confidential_issues_events'] = false
   end
 
   def tag_push_events
