@@ -90,6 +90,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug "gitlab_integration::#{calling_method}: Integration is not currently active as specified in calling resource block."
     return false
 
+
   end
 
   def get_project_id
