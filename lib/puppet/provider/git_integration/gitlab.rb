@@ -96,7 +96,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
-    Puppet.debug("XXX: entering exists method.")
     exists_helper
   end
 
