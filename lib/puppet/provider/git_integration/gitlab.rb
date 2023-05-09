@@ -195,107 +195,99 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def push_events
-    return resource[:push_events]
+    false
   end
 
   def push_events=(value)
-    opts['push_events'] = value
     Puppet.debug("XXX: push_events = #{value} #{resource[:push_events]}.") 
-  end
-
-  def branches_to_be_notified
-    return resource[:branches_to_be_notified]
-  end
-
-  def branches_to_be_notified=(value)
-    opts['branches_to_be_notified'] = value
-  end
-
-  def issues_events
-    return resource[:issues_events]
-  end
-
-  def issues_events=(value)
-    opts['issues_events'] = value
-    Puppet.debug("XXX: issues_events = #{value} #{resource[:issues_events]}.") 
-  end
-
-  def notify_only_default_branch
-    return 'this is the GETter value'
-  end
-
-  def notify_only_default_branch=(value)
-    return 'this is the SETter value.'
-  end
-
-  def notify_only_broken_pipelines
-    return 'this is the getTER value'
-  end
-
-  def notify_only_broken_pipelines=(value)
-    return 'this is the SETter value.'
-  end
-
-  def confidential_issues_events
-    Puppet.debug('XXX confidential_issues_events GETTR.')
     true
   end
 
+  def branches_to_be_notified
+    false
+  end
+
+  def branches_to_be_notified=(value)
+    true
+  end
+
+  def issues_events
+    false
+  end
+
+  def issues_events=(value)
+    true
+  end
+
+  def notify_only_default_branch
+    false
+  end
+
+  def notify_only_default_branch=(value)
+    true
+  end
+
+  def notify_only_broken_pipelines
+    true
+  end
+
+  def notify_only_broken_pipelines=(value)
+    false
+  end
+
+  def confidential_issues_events
+    false
+  end
+
   def confidential_issues_events=(value)
-    Puppet.debug('XXX confidential_issues_events SETTR.')
-    opts['confidential_issues_events'] = value
+    true
   end
 
   def tag_push_events
-    return 'this is the getTER value'
+    true
   end
 
   def tag_push_events=(value)
-    return 'this is the SETter value.'
+    false
   end
 
   def merge_requests_events 
-    return 'this is the getTER value'
+    true
   end
 
   def merge_requests_events=(value)
-    return 'this is the SETter value.'
+    false
   end
 
   def note_events
-    return 'this is the getTER value'
+    false
   end
 
   def note_events=(value)
-    return 'this is the SETter value.'
+    true
   end
 
   def pipeline_events
-    return 'this is the getTER value'
+    false
   end
 
   def pipeline_events=(value)
-    return 'this is the SETter value.'
+    true
   end
 
   def confidential_note_events 
-    return 'this is the getTER value'
+    false
   end
 
   def confidential_note_events=(value)
-    return 'this is the SETter value.'
+    true
   end
 
   def wiki_page_events 
-    return 'this is the getTER value'
+    false
   end
 
   def wiki_page_events=(value)
-    return 'this is the SETter value.'
+    true
   end
 end
-#type/git_integration.rb:    newproperty(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-#type/git_integration.rb:    newproperty(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-#type/git_integration.rb:    newproperty(:pipeline_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-#type/git_integration.rb:    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-#type/git_integration.rb:    newproperty(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
