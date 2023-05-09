@@ -93,6 +93,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
+    Puppet.debug("XXX: exists method.")
     Puppet.debug "XXX exists = #{exists_helper}."
     exists_helper
   end
@@ -142,7 +143,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def create
     project_id = get_project_id
 
-    Puppet.debug("I'll *create* #{resource[:notify_only_broken_pipelines]}.")
+    Puppet.debug("XXX: Create method.")
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     begin
@@ -161,7 +162,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       #opts['wiki_page_events'] = resource[:wiki_page_events]
 
       response = api_call('PUT', url, opts)
-      Puppet.debug("YYY: response = = #{response.class}.") 
 
       if (response.class == Net::HTTPOK)
         return true
