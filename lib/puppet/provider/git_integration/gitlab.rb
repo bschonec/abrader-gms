@@ -242,4 +242,33 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def notify_only_broken_pipelines=(value)
     return 'this is the SETter value.'
   end
+
+  def confidential_issues_events
+    return 'this is the getTER value'
+  end
+
+  def confidential_issues_events=(value)
+    return 'this is the SETter value.'
+  end
+
+  def tag_push_events
+    return 'this is the getTER value'
+  end
+
+  def tag_push_events=(value)
+    return 'this is the SETter value.'
+  end
+
+  def merge_requests_events 
+    return 'this is the getTER value'
+  end
+
+  def merge_requests_events=(value)
+    return 'this is the SETter value.'
+  end
 end
+#type/git_integration.rb:    newproperty(:note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#type/git_integration.rb:    newproperty(:confidential_note_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#type/git_integration.rb:    newproperty(:pipeline_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#type/git_integration.rb:    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+#type/git_integration.rb:    newproperty(:disable_ssl_verify, :boolean => true, :parent => Puppet::Parameter::Boolean) do
