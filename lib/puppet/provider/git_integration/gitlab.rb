@@ -168,7 +168,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
       response = api_call('PUT', url, opts)
 
-    Puppet.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: enter CREATE method.")
+    Puppet.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: exit CREATE method.")
       if (response.class == Net::HTTPOK)
         return true
       else
