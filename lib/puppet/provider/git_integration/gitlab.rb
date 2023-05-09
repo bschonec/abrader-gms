@@ -171,6 +171,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def destroy
     project_id = get_project_id
+    Puppet.debug("YYY: issues_events = #{resource[:issues_events]}.") 
 
       url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
@@ -224,6 +225,14 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def issues_events=(value)
     opts['issues_events'] = value
     Puppet.debug("XXX: issues_events = #{value} #{resource[:issues_events]}.") 
+  end
+
+  def notify_only_default_branch
+    return 'this is the getter value'
+  end
+
+  def notify_only_default_branch=(value)
+    return 'this is the SETter value.'
   end
 
   def notify_only_broken_pipelines
