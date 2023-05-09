@@ -251,7 +251,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_issues_events=(value)
-    return true
+    true
   end
 
   def tag_push_events
