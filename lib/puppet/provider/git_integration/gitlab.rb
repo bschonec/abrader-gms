@@ -199,93 +199,93 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   end
 
-  def push_events
-    false
-  end
-
-  def push_events=(value)
-    true
-  end
-
-  def branches_to_be_notified
-    false
-  end
-
-  def branches_to_be_notified=(value)
-    true
-  end
-
-  def issues_events
-    false
-  end
-
-  def issues_events=(value)
-    true
-  end
-
-  def notify_only_default_branch
-    false
-  end
-
-  def notify_only_default_branch=(value)
-    true
-  end
-
-  def notify_only_broken_pipelines
-    true
-  end
-
-  def notify_only_broken_pipelines=(value)
-    false
-  end
-
-  def confidential_issues_events
-    false
-  end
-
-  def confidential_issues_events=(value)
-    true
-  end
-
-  def tag_push_events
-    true
-  end
-
-  def tag_push_events=(value)
-    false
-  end
-
-  def merge_requests_events 
-    true
-  end
-
-  def merge_requests_events=(value)
-    false
-  end
-
-  def note_events
-    false
-  end
-
-  def note_events=(value)
-    true
-  end
-
-  def pipeline_events
-    false
-  end
-
-  def pipeline_events=(value)
-    true
-  end
-
-  def confidential_note_events 
-    false
-  end
-
-  def confidential_note_events=(value)
-    true
-  end
+#  def push_events
+#    false
+#  end
+#
+#  def push_events=(value)
+#    true
+#  end
+#
+#  def branches_to_be_notified
+#    false
+#  end
+#
+#  def branches_to_be_notified=(value)
+#    true
+#  end
+#
+#  def issues_events
+#    false
+#  end
+#
+#  def issues_events=(value)
+#    true
+#  end
+#
+#  def notify_only_default_branch
+#    false
+#  end
+#
+#  def notify_only_default_branch=(value)
+#    true
+#  end
+#
+#  def notify_only_broken_pipelines
+#    true
+#  end
+#
+#  def notify_only_broken_pipelines=(value)
+#    false
+#  end
+#
+#  def confidential_issues_events
+#    false
+#  end
+#
+#  def confidential_issues_events=(value)
+#    true
+#  end
+#
+#  def tag_push_events
+#    true
+#  end
+#
+#  def tag_push_events=(value)
+#    false
+#  end
+#
+#  def merge_requests_events 
+#    true
+#  end
+#
+#  def merge_requests_events=(value)
+#    false
+#  end
+#
+#  def note_events
+#    false
+#  end
+#
+#  def note_events=(value)
+#    true
+#  end
+#
+#  def pipeline_events
+#    false
+#  end
+#
+#  def pipeline_events=(value)
+#    true
+#  end
+#
+#  def confidential_note_events 
+#    false
+#  end
+#
+#  def confidential_note_events=(value)
+#    true
+#  end
 
   def wiki_page_events 
     false
