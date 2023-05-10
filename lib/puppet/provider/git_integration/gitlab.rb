@@ -293,7 +293,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def wiki_page_events=(value)
     project_id = get_project_id
 
-    Puppet.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: enter SETTER method.")
+    Puppet.debug("gitlab_integration::#{calling_method}: enter SETTER method.")
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     begin
@@ -302,7 +302,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
       response = api_call('PUT', url, opts)
 
-    Puppet.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: exit SETTER method.")
+    Puppet.debug("gitlab_integration::#{calling_method}: exit SETTER method.")
       if (response.class == Net::HTTPOK)
         return true
       else
