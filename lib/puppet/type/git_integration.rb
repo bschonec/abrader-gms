@@ -99,15 +99,15 @@ module Puppet
 #      defaultto :false
 #    end
 
-    newproperty(:wiki_page_events, :boolean => true, :parent => Puppet::Parameter::Boolean) do
-      desc 'Enable notifications for wiki page events.'
+    newproperty(:wiki_page_events, :boolean => true) do
+      desc 'Enable notifications for wiki page eventns.'
+      newvalues(:true, :false)
       defaultto :false
     end
 
     newparam(:server_url) do
       desc 'The URL path to the Git management system server. Required.'
       validate do |value|
-        #unless value =~ /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
         unless value =~ /^(https?:\/\/).*:?.*\/?$/
           raise(Puppet::Error, "Git server URL must be fully qualified, not '#{value}'")
         end
