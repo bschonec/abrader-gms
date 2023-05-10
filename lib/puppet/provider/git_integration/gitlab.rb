@@ -231,6 +231,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_broken_pipelines
+    false
+  end
+
+  def notify_only_broken_pipelines=(value)
     project_id = get_project_id
     Puppet.debug("gitlab_integration::#{calling_method}: enter SETTER method.")
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
@@ -246,10 +250,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     rescue Exception => e
       raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
     end
-  end
-
-  def notify_only_broken_pipelines=(value)
-    false
   end
 
   def confidential_issues_events
