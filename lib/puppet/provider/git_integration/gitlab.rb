@@ -13,10 +13,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     return 'https://gitlab.com'
   end
 
-  def api_version
-    return resource[:gitlab_api_version]
-  end
-
   def calling_method
     # Get calling method and clean it up for good reporting
     cm = String.new
@@ -75,7 +71,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     project_id = get_project_id
 
     integration_hash = Hash.new
-    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
+    url = "#{gms_server}/api/4/projects/#{project_id}/integrations/#{name}"
 
     response = api_call('GET', url)
 
@@ -105,7 +101,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     project_id = get_project_id
 
     Puppet.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: enter CREATE method.")
-    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
+    url = "#{gms_server}/api/4/projects/#{project_id}/integrations/#{name}"
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
@@ -140,7 +136,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     project_id = get_project_id
     Puppet.debug("YYY: issues_events = #{resource[:issues_events]}.") 
 
-      url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
+      url = "#{gms_server}/api/4/projects/#{project_id}/integrations/#{name}"
 
       begin
         response = api_call('DELETE', url)

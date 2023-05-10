@@ -57,12 +57,6 @@ module Puppet
       end
     end
 
-    newparam(:gitlab_api_version) do
-      desc 'The api version to use with gitlab.'
-      defaultto :v4
-      newvalues(:v3, :v4)
-    end
-
     validate do
       validate_token_or_token_file
     end
