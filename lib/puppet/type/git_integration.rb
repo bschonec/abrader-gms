@@ -70,7 +70,7 @@ module Puppet
     newproperty(:issues_events, :boolean => true) do
       desc 'Enable notifications for issue events.'
       newvalues(:true, :false)
-      defaultto :true
+      defaultto :false
     end
 
     newproperty(:confidential_issues_events, :boolean => true) do
