@@ -141,9 +141,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events 
+    Puppet.debug("XXXXXX:  wiki_page_events GETTER")
   end
 
   def wiki_page_events=(value)
+    Puppet.debug("XXXXXX:  wiki_page_events SETTER")
   end
 
 end
