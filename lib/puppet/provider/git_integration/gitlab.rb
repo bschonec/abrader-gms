@@ -232,12 +232,12 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def notify_only_broken_pipelines
     project_id = get_project_id
-    Puppet.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: enter SETTER method.")
+    Puppet.debug("gitlab_integration::#{calling_method}: enter SETTER method.")
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
     begin
       opts['notify_only_broken_pipelines'] = resource[:notify_only_broken_pipelines]
       response = api_call('PUT', url, opts)
-    Puppet.debug("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX: exit SETTER method.")
+    Puppet.debug("gitlab_integration::#{calling_method}: exit SETTER method.")
       if (response.class == Net::HTTPOK)
         return true
       else
