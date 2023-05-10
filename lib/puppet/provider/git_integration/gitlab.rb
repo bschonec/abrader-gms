@@ -231,13 +231,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 #    true
 #  end
 #
-#  def notify_only_broken_pipelines
-#    true
-#  end
-#
-#  def notify_only_broken_pipelines=(value)
-#    false
-#  end
+  def notify_only_broken_pipelines
+    true
+  end
+
+  def notify_only_broken_pipelines=(value)
+    false
+  end
 #
 #  def confidential_issues_events
 #    false
