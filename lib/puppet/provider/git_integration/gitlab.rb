@@ -100,30 +100,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def get_project_id
-
     return 61
-
-  end
-
-  def get_integration_id
-    project_id = get_project_id
-
-    integration_hash = Hash.new
-
-    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
-
-    response = api_call('GET', url)
-
-    integration_json = JSON.parse(response.body)
-
-    # If the Gitlab integration has never been activated then the API will return an empty set.
-    # If the Gitlab integration has EVER been activated then we'll get a hash that returns the 
-    # property 'active' with true or false.
-    if integration_json.active?
-        return integration_json['active']
-    end
-
-    return nil
   end
 
   def create
