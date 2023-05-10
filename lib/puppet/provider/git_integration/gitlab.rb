@@ -299,9 +299,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
-      opts['wiki_page_events'] = true
-      opts['tag_push_events'] = true
-      #opts['wiki_page_events'] = resource[:wiki_page_events]
+      opts['tag_push_events'] = resource[:tag_push_events]
+      opts['wiki_page_events'] = resource[:wiki_page_events]
 
       response = api_call('PUT', url, opts)
 
