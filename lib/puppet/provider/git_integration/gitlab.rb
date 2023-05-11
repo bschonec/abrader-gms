@@ -306,6 +306,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       opts["#{param}"] = "#{value}"
       opts['foo'] = false
       Puppet.debug("XXXX opts: #{opts}.")
+      Puppet.debug("XXXX method: #{__method__}.")
 
       response = api_call('PUT', url, opts)
 
