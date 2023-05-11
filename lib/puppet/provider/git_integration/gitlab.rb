@@ -7,7 +7,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
   commands :istrue => 'true', :isfalse => 'false'
   defaultfor :gitlab => :exists
-
+  brian = :false
   # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
   # otherwise return https://gitlab.com.
   def gms_server
@@ -203,7 +203,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def push_events=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def branches_to_be_notified
@@ -211,7 +211,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def branches_to_be_notified=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def issues_events
@@ -219,7 +219,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def issues_events=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def notify_only_default_branch
@@ -227,7 +227,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_default_branch=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def notify_only_broken_pipelines
@@ -235,7 +235,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_broken_pipelines=(value)
-    false
+    do_the_needfull("#{__method__}", brian)
   end
 
   def confidential_issues_events
@@ -243,7 +243,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_issues_events=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def tag_push_events
@@ -251,7 +251,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def tag_push_events=(value)
-    false
+    do_the_needfull("#{__method__}", brian)
   end
 
   def merge_requests_events 
@@ -259,7 +259,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def merge_requests_events=(value)
-    false
+    do_the_needfull("#{__method__}", brian)
   end
 
   def note_events
@@ -267,7 +267,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def note_events=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def pipeline_events
@@ -275,7 +275,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def pipeline_events=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def confidential_note_events 
@@ -283,7 +283,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_note_events=(value)
-    true
+    do_the_needfull("#{__method__}", brian)
   end
 
   def wiki_page_events 
@@ -291,7 +291,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events=(value)
-    do_the_needfull("#{__method__}", :true)
+    do_the_needfull("#{__method__}", brian)
   end
 
   def do_the_needfull(param, value)
@@ -304,7 +304,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     begin
       opts = { 'webhook' => resource[:webhook].strip }
       opts["#{param}"] = "#{value}"
-      opts['foo'] = false
       Puppet.debug("XXXX opts: #{opts}.")
       Puppet.debug("XXXX method: #{__method__}.")
 
