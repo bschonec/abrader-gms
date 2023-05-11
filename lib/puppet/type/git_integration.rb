@@ -113,8 +113,8 @@ module Puppet
       desc 'Enable notifications for wiki page events.'
       newvalues(:true, :false)
       defaultto :false
-      munge do |value|
-        Bool(value)
+      def insync?(is)
+        is.to_s == should.to_s
       end
     end
 
