@@ -291,6 +291,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events=(value)
+    do_the_needul('wiki_page_events', false)
+  end
+
+  def do_the_needful(param, value)
+
     project_id = get_project_id
 
     Puppet.debug("gitlab_integration::#{calling_method}: enter SETTER method.")
@@ -298,7 +303,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
-      opts['wiki_page_events'] = resource[:wiki_page_events]
+      opts[#{param}] = #{value}
 
       response = api_call('PUT', url, opts)
 
