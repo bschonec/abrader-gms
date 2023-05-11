@@ -295,10 +295,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
     response = api_call('GET', url)
     integration_json = JSON.parse(response.body)
-    a = integration_json['wiki_page_events'].to_s
+    a = integration_json['wiki_page_events']
     Puppet.debug("YYYY: getting CURRENT value wiki_page_events: #{a} :ZZZZ")
 
-    if (integration_json['wiki_page_events'].to_s == resource[:wiki_page_events].to_s)       
+    if (integration_json['wiki_page_events'] == resource[:wiki_page_events])       
     Puppet.debug("YYYY: wiki_page_events is already set properly to value: #{resource[:wiki_page_events]}.")
     else
     Puppet.debug("YYYY: wiki_page_events SHOULD be set to #{resource[:wiki_page_events]}.")
