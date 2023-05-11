@@ -283,7 +283,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_note_events=(value)
-    do_the_needfull(__method__, :brian)
+    do_the_needfull(__method__, "#{brian}")
   end
 
   def wiki_page_events 
