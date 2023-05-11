@@ -307,8 +307,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def wiki_page_events=(value)
     Puppet.debug("YYYY: wiki_page_events SETTER. value = #{value}.")
-    #do_the_needfull('wiki_page_events', resource[:wiki_page_events])
-    do_the_needfull('wiki_page_events', 'false')
+    do_the_needfull('wiki_page_events', resource[:wiki_page_events])
   end
 
   def do_the_needfull(param, value)
