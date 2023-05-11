@@ -295,7 +295,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
     response = api_call('GET', url)
     integration_json = JSON.parse(response.body)
-    a = integration_json['wiki_page_events'] == :true
+    a = integration_json['wiki_page_events']
     Puppet.debug("YYYY: getting CURRENT value of #{a} :ZZZZ")
     integration_json['wiki_page_events'] == :true
   end
