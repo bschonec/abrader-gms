@@ -203,7 +203,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def push_events=(value)
-    do_the_needfull(#{__method__}, #{brian})
+    do_the_needfull()
   end
 
   def branches_to_be_notified
