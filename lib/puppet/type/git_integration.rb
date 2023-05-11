@@ -52,15 +52,6 @@ module Puppet
       defaultto :false
     end
 
-    newproperty(:notify_only_default_branch, :boolean => true) do
-      desc 'DEPRECATED: This parameter has been replaced with branches_to_be_notified.'
-      newvalues(:true, :false)
-      def insync?(is)
-        is.to_s == should.to_s
-      end
-      defaultto :false
-    end
-
     newproperty(:branches_to_be_notified) do
       desc 'Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default value is “default”.'
       newvalues(:all, :default, :protected, :default_and_protected)

@@ -154,7 +154,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       opts['merge_requests_events'] = resource[:merge_requests_events]
       opts['note_events'] = resource[:note_events]
       opts['notify_only_broken_pipelines'] = resource[:notify_only_broken_pipelines]
-      opts['notify_only_default_branch'] = resource[:notify_only_default_branch]
       opts['pipeline_events'] = resource[:pipeline_events]
       opts['push_events'] = resource[:push_events]
       opts['tag_push_events'] = resource[:tag_push_events]
@@ -219,17 +218,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def issues_events=(value)
-    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
-    # Trim off the last character of the method (which end in a =)
-    method_name = __method__.to_s[0...-1]
-    do_the_needful(method_name, resource[method_name])
-  end
-
-  def notify_only_default_branch
-    get_the_needful(__method__)
-  end
-
-  def notify_only_default_branch=(value)
     Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
     # Trim off the last character of the method (which end in a =)
     method_name = __method__.to_s[0...-1]
