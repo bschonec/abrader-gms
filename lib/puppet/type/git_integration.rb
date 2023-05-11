@@ -103,6 +103,12 @@ module Puppet
       defaultto :false
     end
 
+    newproperty(:commit_events, :boolean => true) do
+      desc 'Enable notifications for commit events.'
+      newvalues(:true, :false)
+      defaultto :false
+    end
+
     newproperty(:pipeline_events, :boolean => true) do
       desc 'Enable notifications for pipeline events.'
       newvalues(:true, :false)

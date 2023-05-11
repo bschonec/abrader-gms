@@ -320,6 +320,17 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     do_the_needful(method_name, resource[method_name])
   end
 
+  def commit_events
+    get_the_needful(__method__)
+  end
+
+  def commit_events=(value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
+  end
+
   def wiki_page_events 
     get_the_needful(__method__)
   end
