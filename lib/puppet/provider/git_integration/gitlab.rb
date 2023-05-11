@@ -298,7 +298,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     a = integration_json['wiki_page_events'] == :true
     Puppet.debug("YYYY: getting CURRENT value of #{a} :ZZZZ")
     integration_json['wiki_page_events'] == :true
-    :true
+    a
   end
 
   def wiki_page_events=(value)
