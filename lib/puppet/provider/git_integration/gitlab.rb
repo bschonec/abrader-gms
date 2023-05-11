@@ -291,7 +291,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events=(value)
-    do_the_needfull(__method__, #{brian})
+    do_the_needfull(__method__, #brian)
   end
 
   def do_the_needfull(param, value)
