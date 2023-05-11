@@ -301,6 +301,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     # Return a true boolean based on the property's string value.
     integration_json['wiki_page_events'] == 'false' ? :true : :false
+    :true
   end
 
   def wiki_page_events=(value)
