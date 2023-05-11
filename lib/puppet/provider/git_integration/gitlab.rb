@@ -299,7 +299,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY: getting CURRENT value wiki_page_events: #{a} :ZZZZ")
     Puppet.debug("YYYY: wiki_page_events SHOULD be set to #{resource[:
     integration_json['wiki_page_events']
-    0
+    false
   end
 
   def wiki_page_events=(value)
