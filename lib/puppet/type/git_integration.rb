@@ -76,7 +76,7 @@ module Puppet
     newproperty(:confidential_issues_events, :boolean => true) do
       desc 'Enable notifications for confidential issue events.'
       newvalues(:true, :false)
-      defaultto :true 
+      defaultto :false
     end
 
     newproperty(:merge_requests_events, :boolean => true) do
