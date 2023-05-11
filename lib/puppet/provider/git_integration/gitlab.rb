@@ -301,11 +301,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     # Return a true boolean based on the property's string value.
     integration_json['wiki_page_events'] == resource[:wiki_page_events] 
+    'true'
   end
 
   def wiki_page_events=(value)
     Puppet.debug("YYYY: wiki_page_events SETTER. value = #{value}.")
-    do_the_needfull('wiki_page_events', resource[:wiki_page_events])
+    #do_the_needfull('wiki_page_events', resource[:wiki_page_events])
+    do_the_needfull('wiki_page_events', 'false')
   end
 
   def do_the_needfull(param, value)
