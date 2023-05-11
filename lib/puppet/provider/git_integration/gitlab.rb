@@ -288,7 +288,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events 
-    get_the_needful('wiki_page_events')
+    get_the_needful(__method__)
   end
 
   def wiki_page_events=(value)
