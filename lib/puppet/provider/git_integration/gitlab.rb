@@ -297,7 +297,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration_json = JSON.parse(response.body)
     Puppet.debug("YYYY: getting CURRENT value of #{integration_json['wiki_page_events']} :YYYY")
     integration_json['wiki_page_events']
-    return false
   end
 
   def wiki_page_events=(value)
