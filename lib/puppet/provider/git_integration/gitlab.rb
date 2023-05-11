@@ -299,7 +299,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events=(value)
-    do_the_needfull(__method__, value?)
+    do_the_needfull(__method__, value)
   end
 
   def do_the_needfull(param, value)
@@ -310,7 +310,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
-      opts['wiki_page_events'] = value
+      opts['wiki_page_events'] = value?
       Puppet.debug("YYYY: opts: #{opts}.")
 
       response = api_call('PUT', url, opts)
