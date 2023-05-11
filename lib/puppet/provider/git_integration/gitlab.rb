@@ -328,8 +328,9 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
     response = api_call('GET', url)
     integration_json = JSON.parse(response.body)
-    a = integration_json["#{param}"]
-    Puppet.debug("YYYY: getting CURRENT value #{param}: #{a}. SHOULD be: " + resource[param] + " :ZZZZ")
+    a = integration_json["#{param}"] 
+    b = resource["#{param}"]
+    Puppet.debug("YYYY: getting CURRENT value #{param}: #{a}. SHOULD be: #{b} :ZZZZ")
 
     # Return true/false boolean based on the property's string value.
     integration_json["#{param}"]
