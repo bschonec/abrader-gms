@@ -103,12 +103,6 @@ module Puppet
       defaultto :false
     end
 
-    newproperty(:comment_on_event_enabled, :boolean => true) do
-      desc 'UNKNOWN'
-      newvalues(:true, :false)
-      defaultto :false
-    end
-
     newproperty(:pipeline_events, :boolean => true) do
       desc 'Enable notifications for pipeline events.'
       newvalues(:true, :false)
