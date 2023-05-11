@@ -304,8 +304,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     begin
       opts = { 'webhook' => resource[:webhook].strip }
       opts["#{param}"] = "#{value}"
-      Puppet.debug("XXXX opts: #{opts}.")
-      Puppet.debug("XXXX method: #{__method__}.")
+      Puppet.debug("YYY: opts: #{opts}.")
+      Puppet.debug("YYY: method: #{__method__}.")
 
       response = api_call('PUT', url, opts)
 
