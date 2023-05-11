@@ -55,6 +55,9 @@ module Puppet
     newproperty(:branches_to_be_notified) do
       desc 'Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default value is “default”.'
       newvalues('all', 'default', 'protected', 'default_and_protected')
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto 'default'
     end
 
