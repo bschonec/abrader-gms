@@ -197,7 +197,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def push_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def branches_to_be_notified
@@ -205,7 +205,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def branches_to_be_notified=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def issues_events
@@ -213,7 +213,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def issues_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def notify_only_default_branch
@@ -221,7 +221,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_default_branch=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def notify_only_broken_pipelines
@@ -229,7 +229,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def notify_only_broken_pipelines=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def confidential_issues_events
@@ -244,7 +244,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_issues_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def tag_push_events
@@ -252,7 +252,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def tag_push_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def merge_requests_events 
@@ -260,7 +260,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def merge_requests_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def note_events
@@ -268,7 +268,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def note_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def pipeline_events
@@ -276,7 +276,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def pipeline_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def confidential_note_events 
@@ -284,7 +284,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_note_events=(value)
-    do_the_needfull(__method__, value)
+    #do_the_needfull(__method__, value)
   end
 
   def wiki_page_events 
