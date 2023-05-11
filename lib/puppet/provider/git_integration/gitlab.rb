@@ -291,10 +291,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events=(value)
-    do_the_needul('wiki_page_events', false)
+    do_the_needfull('wiki_page_events', false)
   end
 
-  def do_the_needful(param, value)
+  def do_the_needfull(param, value)
 
     project_id = get_project_id
 
