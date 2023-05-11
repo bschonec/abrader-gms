@@ -300,7 +300,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY: wiki_page_events SHOULD be set to #{resource[:wiki_page_events]}.")
 
     # Return a true boolean based on the property's string value.
-    integration_json['wiki_page_events'] == 'false' ? :true : :false
+    integration_json['wiki_page_events'] == 'true' ? :true : :false
   end
 
   def wiki_page_events=(value)
