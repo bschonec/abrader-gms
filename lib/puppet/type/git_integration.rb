@@ -111,8 +111,8 @@ module Puppet
 
     newproperty(:wiki_page_events, :boolean => true) do
       desc 'Enable notifications for wiki page eventns.'
-      newvalues(true, false)
-      defaultto false
+      newvalues(:true, :false)
+      defaultto :false
     end
 
     newparam(:server_url) do
