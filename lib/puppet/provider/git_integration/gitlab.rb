@@ -302,6 +302,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def wiki_page_events=(value)
     Puppet.debug("HELLO")
     Puppet.debug(__method__)
+    Puppet.debug(value)
     do_the_needfull(__method__, value)
   end
 
