@@ -299,25 +299,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events=(value)
-    project_id = get_project_id
-
-    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
-
-    begin
-      opts = { 'webhook' => resource[:webhook].strip }
-      opts['wiki_page_events'] = :true
-      Puppet.debug("YYY: opts: #{opts}.")
-
-      response = api_call('PUT', url, opts)
-
-      if (response.class == Net::HTTPOK)
-        return true
-      else
-        raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{response.inspect}")
-      end
-    rescue Exception => e
-      raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
-    end
+    do_the_needfull(__method__, value)
   end
 
   def do_the_needfull(param, value)
