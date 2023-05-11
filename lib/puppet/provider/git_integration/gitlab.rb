@@ -269,6 +269,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def note_events=(value)
     #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def pipeline_events
@@ -277,6 +281,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def pipeline_events=(value)
     #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def confidential_note_events 
@@ -284,7 +292,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_note_events=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def wiki_page_events 
