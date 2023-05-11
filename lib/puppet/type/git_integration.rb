@@ -46,72 +46,108 @@ module Puppet
     newproperty(:notify_only_broken_pipelines, :boolean => true) do
       desc 'Send notifications for broken pipelines.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:notify_only_default_branch, :boolean => true) do
       desc 'DEPRECATED: This parameter has been replaced with branches_to_be_notified.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:branches_to_be_notified) do
       desc 'Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default value is “default”.'
       newvalues(:all, :default, :protected, :default_and_protected)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :default
     end
 
     newproperty(:push_events, :boolean => true) do
       desc 'Enable notifications for push events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:issues_events, :boolean => true) do
       desc 'Enable notifications for issue events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:confidential_issues_events, :boolean => true) do
       desc 'Enable notifications for confidential issue events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:merge_requests_events, :boolean => true) do
       desc 'Enable notifications for merge request events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:tag_push_events, :boolean => true) do
       desc 'Enable notifications for tag push events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:note_events, :boolean => true) do
       desc 'Enable notifications for note events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:confidential_note_events, :boolean => true) do
       desc 'Enable notifications for confidential note events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:commit_events, :boolean => true) do
       desc 'Enable notifications for commit events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 
     newproperty(:pipeline_events, :boolean => true) do
       desc 'Enable notifications for pipeline events.'
       newvalues(:true, :false)
+      def insync?(is)
+        is.to_s == should.to_s
+      end
       defaultto :false
     end
 

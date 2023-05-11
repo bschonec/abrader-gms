@@ -352,7 +352,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     response = api_call('GET', url)
     integration_json = JSON.parse(response.body)
     a = integration_json["#{param}"]
-    Puppet.debug("YYYY: getting CURRENT value #{param}: #{a} :ZZZZ")
+    Puppet.debug("YYYY: getting CURRENT value #{param}: #{a}. SHOULD be: #{a} :ZZZZ")
 
     # Return true/false boolean based on the property's string value.
     integration_json["#{param}"]
