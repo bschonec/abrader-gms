@@ -288,6 +288,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events 
+    Puppet.debug("YYYY: wiki_page_events GETTER.")
     project_id = get_project_id
 
     integration_hash = Hash.new
@@ -299,6 +300,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def wiki_page_events=(value)
+    Puppet.debug("YYYY: wiki_page_events SETTER.")
     do_the_needfull('wiki_page_events', value)
   end
 
