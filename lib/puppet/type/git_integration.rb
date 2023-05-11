@@ -113,6 +113,9 @@ module Puppet
       desc 'Enable notifications for wiki page events.'
       newvalues(:true, :false)
       defaultto :false
+      munge do |value|
+        Boolean(value)
+      end
     end
 
     newparam(:server_url) do
