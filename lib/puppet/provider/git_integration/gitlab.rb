@@ -245,6 +245,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
     response = api_call('GET', url)
     integration_json = JSON.parse(response.body)
+    Puppet.debug("confidential_issues_events: #{integration_json['confidential_issues_events']}.")
     integration_json['confidential_issues_events']
   end
 
