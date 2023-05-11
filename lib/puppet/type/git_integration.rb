@@ -114,7 +114,7 @@ module Puppet
       newvalues(:true, :false)
       defaultto :false
       munge do |value|
-        Boolean(value)
+        Bool(value)
       end
     end
 
