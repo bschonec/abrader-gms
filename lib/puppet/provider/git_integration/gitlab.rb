@@ -193,43 +193,58 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def push_events
-    false
+    get_the_needful(__method__)
   end
 
   def push_events=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def branches_to_be_notified
-    false
+    get_the_needful(__method__)
   end
 
   def branches_to_be_notified=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def issues_events
-    false
+    get_the_needful(__method__)
   end
 
   def issues_events=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def notify_only_default_branch
-    false
+    get_the_needful(__method__)
   end
 
   def notify_only_default_branch=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def notify_only_broken_pipelines
-    true
+    get_the_needful(__method__)
   end
 
   def notify_only_broken_pipelines=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def confidential_issues_events
@@ -244,31 +259,39 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_issues_events=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def tag_push_events
-    true
+    get_the_needful(__method__)
   end
 
   def tag_push_events=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def merge_requests_events 
-    true
+    get_the_needful(__method__)
   end
 
   def merge_requests_events=(value)
-    #do_the_needful(__method__, value)
+    Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
+    # Trim off the last character of the method (which end in a =)
+    method_name = __method__.to_s[0...-1]
+    do_the_needful(method_name, resource[method_name])
   end
 
   def note_events
-    false
+    get_the_needful(__method__)
   end
 
   def note_events=(value)
-    #do_the_needful(__method__, value)
     Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
     # Trim off the last character of the method (which end in a =)
     method_name = __method__.to_s[0...-1]
@@ -276,11 +299,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def pipeline_events
-    false
+    get_the_needful(__method__)
   end
 
   def pipeline_events=(value)
-    #do_the_needful(__method__, value)
     Puppet.debug("YYYY: SETTER " + __method__.to_s + "#{value}.")
     # Trim off the last character of the method (which end in a =)
     method_name = __method__.to_s[0...-1]
@@ -288,7 +310,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def confidential_note_events 
-    false
+    get_the_needful(__method__)
   end
 
   def confidential_note_events=(value)
