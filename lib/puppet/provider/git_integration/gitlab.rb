@@ -292,32 +292,47 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     integration_hash = Hash.new
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
-    response = api_call('PUT', url)
+    response = api_call('GET', url)
     integration_json = JSON.parse(response.body)
     Puppet.debug("wiki_page_events: #{integration_json['wiki_page_events']}.")
     integration_json['wiki_page_events']
   end
 
   def wiki_page_events=(value)
-    do_the_needfull(__method__, value)
+    project_id = get_project_id
+
+    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
+
+    begin
+      opts = { 'webhook' => resource[:webhook].strip }
+      opts['wiki_page_events'] = :true
+      Puppet.debug("YYY: opts: #{opts}.")
+
+      response = api_call('PUT', url, opts)
+
+      if (response.class == Net::HTTPOK)
+        return true
+      else
+        raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{response.inspect}")
+      end
+    rescue Exception => e
+      raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
+    end
   end
 
   def do_the_needfull(param, value)
 
     project_id = get_project_id
 
-    Puppet.debug("gitlab_integration::#{calling_method}: enter SETTER method.")
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
       opts["#{param}"] = "#{value}"
       Puppet.debug("YYY: opts: #{opts}.")
-      Puppet.debug("YYY: method: #{__method__}.")
 
       response = api_call('PUT', url, opts)
 
-    Puppet.debug("gitlab_integration::#{calling_method}: exit SETTER method.")
       if (response.class == Net::HTTPOK)
         return true
       else
