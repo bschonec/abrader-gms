@@ -305,7 +305,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     end
 
     # Return a true boolean based on the property's string value.
-    Puppet.debug("YYYY: wiki_page_events we WILL be setting it to #{a}.")
     a
   end
 
