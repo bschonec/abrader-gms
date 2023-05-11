@@ -316,24 +316,26 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def do_the_needfull(param, value)
 
-    Puppet.debug("YYYY: wiki_page_events GETTER.")
     project_id = get_project_id
 
-    integration_hash = Hash.new
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
-    response = api_call('GET', url)
-    integration_json = JSON.parse(response.body)
-    a = integration_json['wiki_page_events']
-    Puppet.debug("YYYY: getting CURRENT value wiki_page_events: #{a} :ZZZZ")
 
-    if (integration_json['wiki_page_events'].to_s == resource[:wiki_page_events].to_s)       
-      Puppet.debug("YYYY: wiki_page_events is already set properly to value: #{resource[:wiki_page_events]}.")
-    else
-      Puppet.debug("YYYY: wiki_page_events SHOULD be set to #{resource[:wiki_page_events]}.")
+    begin
+      opts = { 'webhook' => resource[:webhook].strip }
+      Puppet.debug("YYYY: #{param}: setting to value #{value} :YYYY")
+      opts["#{param}"] = value
+      Puppet.debug("YYYY: opts: #{opts}.")
+
+      response = api_call('PUT', url, opts)
+
+      if (response.class == Net::HTTPOK)
+        return true
+      else
+        raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{response.inspect}")
+      end
+    rescue Exception => e
+      raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
     end
-
-    # Return true/false boolean based on the property's string value.
-    integration_json['wiki_page_events']
-
+  end
 
 end
