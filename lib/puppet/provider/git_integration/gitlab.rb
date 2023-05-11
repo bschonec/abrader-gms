@@ -311,7 +311,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     begin
       opts = { 'webhook' => resource[:webhook].strip }
-      Puppet.debug("YYYY: setting to value #{value} :YYYY")
+      Puppet.debug("YYYY: #{param} #{value} setting to value #{value} :YYYY")
       opts["#{param}"] = value
       Puppet.debug("YYYY: opts: #{opts}.")
 
