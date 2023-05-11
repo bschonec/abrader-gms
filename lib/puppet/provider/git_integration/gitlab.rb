@@ -299,13 +299,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY: getting CURRENT value wiki_page_events: #{a} :ZZZZ")
 
     if (integration_json['wiki_page_events'].to_s == resource[:wiki_page_events].to_s)       
-    Puppet.debug("YYYY: wiki_page_events is already set properly to value: #{resource[:wiki_page_events]}.")
+      Puppet.debug("YYYY: wiki_page_events is already set properly to value: #{resource[:wiki_page_events]}.")
     else
-    Puppet.debug("YYYY: wiki_page_events SHOULD be set to #{resource[:wiki_page_events]}.")
+      Puppet.debug("YYYY: wiki_page_events SHOULD be set to #{resource[:wiki_page_events]}.")
     end
 
-    # Return a true boolean based on the property's string value.
-    a
+    # Return true/false boolean based on the property's string value.
+    integration_json['wiki_page_events']
   end
 
   def wiki_page_events=(value)
