@@ -9,6 +9,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   defaultfor :gitlab => :exists
 
 
+  mk_resource_methods
   def self.instances
     my_fakestatus = fakestatus() 
     new(my_fakestatus)
