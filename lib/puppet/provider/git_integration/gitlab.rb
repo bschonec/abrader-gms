@@ -19,6 +19,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def self.get_integrations
+    Puppet.debug("YYYY:                asasfasffs.")
     a = ['hangouts-chat']
   end
 
