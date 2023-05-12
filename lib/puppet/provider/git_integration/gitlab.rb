@@ -93,8 +93,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
-    #exists_helper
-    true
+    exists_helper
   end
 
   def get_project_id
@@ -142,6 +141,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def create
+    Puppet.debug("YYYY: creating integration :ZZZZ")
     project_id = get_project_id
 
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
@@ -323,7 +323,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def get_the_needful(param)
 
-    Puppet.debug("YYYY: get_the_needful #{param} GETTER.")
+    foo = __method__
+    Puppet.debug("YYYY: get_the_needful #{foo} -- #{param} GETTER.")
     project_id = get_project_id
 
     integration_hash = Hash.new
