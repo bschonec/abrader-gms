@@ -12,14 +12,16 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.instances
     Puppet.debug("YYYY:                asasfasffs.")
-    my_fakestatus = fakestatus() 
-    new(my_fakestatus)
-
+    get_integrations.collect do |int|
+      status = fakestatus()
+      new(status)
+    end
   end
 
   def self.get_integrations
     a = ['hangouts-chat']
   end
+
   def self.fakestatus
 
     Puppet.debug("YYYY:                asasfasffs.")
