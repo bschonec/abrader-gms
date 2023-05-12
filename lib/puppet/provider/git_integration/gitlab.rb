@@ -12,7 +12,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.instances
     a = __method__
-    Puppet.debug("YYYY:  METHOD: #{a}.")
+    Puppet.debug("YYYY:  METHOD: self.#{a}.")
     get_list_of_integrations.collect do |int|
       status = fakestatus()
       new(status)
@@ -22,7 +22,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def self.get_list_of_integrations
     # https://nfiv-schon-02d.nfii.com/api/v4/projects/61/integrations  gets all integrations active
     a = __method__
-    Puppet.debug("YYYY:  METHOD: #{a}.")
+    Puppet.debug("YYYY:  METHOD: self.#{a}.")
     a =  'hangouts-chat'.split("\n")
     Puppet.debug("YYYY:  a = #{a}.")
     a.sort
@@ -30,7 +30,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.fakestatus
     a = __method__
-    Puppet.debug("YYYY:  METHOD: #{a}.")
+    Puppet.debug("YYYY:  METHOD: self.#{a}.")
     integration = {}
     integration[:ensure] = :present
     integration[:comment_on_event_enabled] = false
