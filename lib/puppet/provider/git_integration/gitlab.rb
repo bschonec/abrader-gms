@@ -21,7 +21,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def self.get_list_of_integrations
     # https://nfiv-schon-02d.nfii.com/api/v4/projects/61/integrations  gets all integrations active
     Puppet.debug("YYYY:                asasfasffs.")
-    a =  'mhangouts-chat\nhangouts-chat'.split("\n")
+    a =  'hangouts-chat'.split("\n")
     Puppet.debug("YYYY:  a = #{a}    asasfasffs.")
     a.sort
   end
