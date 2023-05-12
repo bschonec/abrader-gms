@@ -172,6 +172,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def destroy
+    Puppet.debug("YYYY: destroying :ZZZZ")
     project_id = get_project_id
     Puppet.debug("YYY: issues_events = #{resource[:issues_events]}.") 
 
@@ -321,7 +322,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def get_the_needful(param)
 
-    Puppet.debug("YYYY: #{param} GETTER.")
+    Puppet.debug("YYYY: get_the_needful #{param} GETTER.")
     project_id = get_project_id
 
     integration_hash = Hash.new
@@ -330,7 +331,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration_json = JSON.parse(response.body)
     a = integration_json["#{param}"] 
     b = resource["#{param}"]
-    Puppet.debug("YYYY: getting CURRENT value #{param}: #{a}. SHOULD be: #{b} :ZZZZ")
+    Puppet.debug("YYYY: get_the_needful getting CURRENT value #{param}: #{a}. SHOULD be: #{b} :ZZZZ")
 
     # Return true/false boolean based on the property's string value.
     integration_json["#{param}"]
