@@ -350,6 +350,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       opts["#{param}"] = value
       Puppet.debug("YYYY: opts: #{opts}.")
 
+      Puppet.debug("YYYY: do_the_needful #{param} :ZZZZ")
       response = api_call('PUT', url, opts)
 
       if (response.class == Net::HTTPOK)
