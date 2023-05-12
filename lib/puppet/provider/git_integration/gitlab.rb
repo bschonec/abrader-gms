@@ -14,6 +14,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   end
 
+  def self.fakestatus
+
+    integration = {}
+
+    integration[:ensure] = :present
+
+  end
 
   # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
   # otherwise return https://gitlab.com.
