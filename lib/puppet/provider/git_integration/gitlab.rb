@@ -20,6 +20,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
     integration[:ensure] = :present
     Puppet.debug("YYYY:       sdfasfasflasflasfaslfasdf.")
+    Puppet.debug("YYYY:       #{integration}.")
+    integration
   end
 
   # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
