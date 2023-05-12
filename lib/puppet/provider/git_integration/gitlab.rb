@@ -9,6 +9,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   defaultfor :gitlab => :exists
 
 
+  def self.prefetch
+
+
+  end
 
 
   # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
@@ -335,7 +339,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration_json = JSON.parse(response.body)
     a = integration_json["#{param}"] 
     b = resource["#{param}"]
-    Puppet.debug("YYYY: get_the_needful getting CURRENT value #{param}: #{a}. SHOULD be: #{b} :ZZZZ")
+    Puppet.debug("YYYY: get_the_needful getting CURRENT value: #{param}==#{a}. #{param} SHOULD be: #{b} :ZZZZ")
 
     # Return true/false boolean based on the property's string value.
     integration_json["#{param}"]
