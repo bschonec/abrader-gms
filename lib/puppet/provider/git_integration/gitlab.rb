@@ -11,7 +11,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.instances
     
-    new(fakestatus)
+    new(akestatus)
 
   end
 
