@@ -8,22 +8,21 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   commands :istrue => 'true', :isfalse => 'false'
   defaultfor :gitlab => :exists
 
-  
-
-mk_resource_methods
+  mk_resource_methods
 
   def self.instances
     Puppet.debug("YYYY:                asasfasffs.")
-    get_integrations.collect do |int|
+    get_list_of_integrations.collect do |int|
       status = fakestatus()
       new(status)
     end
   end
 
-  def self.get_integrations
+  def self.get_list_of_integrations
     # https://nfiv-schon-02d.nfii.com/api/v4/projects/61/integrations  gets all integrations active
     Puppet.debug("YYYY:                asasfasffs.")
-    a = ['hangouts-chat']
+    a =  'hangouts-chat\nhangouts-chat'
+    a.split("\n").sort
   end
 
   def self.fakestatus
