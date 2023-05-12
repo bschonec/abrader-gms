@@ -19,6 +19,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def self.get_integrations
+    # https://nfiv-schon-02d.nfii.com/api/v4/projects/61/integrations  gets all integrations active
     Puppet.debug("YYYY:                asasfasffs.")
     a = ['hangouts-chat']
   end
