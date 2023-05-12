@@ -19,6 +19,9 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration = {}
 
     integration[:ensure] = :present
+    integration[:comment_on_event_enabled] = false
+    integration[:confidential_issues_events] = false
+    integration[:confidential_note_events] = false
     Puppet.debug("YYYY:       sdfasfasflasflasfaslfasdf.")
     Puppet.debug("YYYY:       #{integration}.")
     integration
