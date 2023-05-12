@@ -14,7 +14,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     get_list_of_integrations.collect do |int|
-      status = fakestatus()
+      status = get_integration_properties()
       Puppet.debug("YYYY: status = #{status}.")
       new(status)
     end
@@ -29,7 +29,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     a.sort
   end
 
-  def self.fakestatus
+  def self.get_integration_properties
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     integration = {}
