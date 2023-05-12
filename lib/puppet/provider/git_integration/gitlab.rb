@@ -7,7 +7,14 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
   commands :istrue => 'true', :isfalse => 'false'
   defaultfor :gitlab => :exists
-  brian = :false
+
+
+  self.prefetch
+
+
+  end
+
+
   # Return the URL to the Gitlab Server if variable, 'sever_url" is defined,
   # otherwise return https://gitlab.com.
   def gms_server
@@ -323,8 +330,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def get_the_needful(param)
 
-    foo = __method__
-    Puppet.debug("YYYY: get_the_needful #{foo} -- #{param} GETTER.")
+    Puppet.debug("YYYY: get_the_needful #{param} GETTER.")
     project_id = get_project_id
 
     integration_hash = Hash.new
@@ -333,7 +339,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration_json = JSON.parse(response.body)
     a = integration_json["#{param}"] 
     b = resource["#{param}"]
-    Puppet.debug("YYYY: get_the_needful getting CURRENT value #{param}: #{a}. SHOULD be: #{b} :ZZZZ")
+    Puppet.debug("YYYY: get_the_needful getting CURRENT value: #{param}==#{a}. #{param} SHOULD be: #{b} :ZZZZ")
 
     # Return true/false boolean based on the property's string value.
     integration_json["#{param}"]
