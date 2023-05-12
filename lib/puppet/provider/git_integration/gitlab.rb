@@ -11,7 +11,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   mk_resource_methods
 
   def self.instances
-    Puppet.debug("YYYY:                asasfasffs.")
+    a = __method__
+    Puppet.debug("YYYY:  method: #{a}.")
     get_list_of_integrations.collect do |int|
       status = fakestatus()
       new(status)
