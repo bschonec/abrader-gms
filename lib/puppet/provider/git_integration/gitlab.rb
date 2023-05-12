@@ -34,8 +34,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     integration = {}
     integration[:name] = 'hangouts-chat'
-    integration[:project_name] = 'jenkins-playground'
-    integration[:project_id] = '61'
     integration[:ensure] = :present
     integration[:comment_on_event_enabled] = false
     integration[:confidential_issues_events] = false
