@@ -8,9 +8,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   commands :istrue => 'true', :isfalse => 'false'
   defaultfor :gitlab => :exists
 
-
   mk_resource_methods
+
   def self.instances
+    Puppet.debug("YYYY:                asasfasffs.")
     my_fakestatus = fakestatus() 
     new(my_fakestatus)
 
@@ -18,14 +19,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.fakestatus
 
+    Puppet.debug("YYYY:                asasfasffs.")
     integration = {}
 
     integration[:ensure] = :present
     integration[:comment_on_event_enabled] = false
     integration[:confidential_issues_events] = false
     integration[:confidential_note_events] = false
-    Puppet.debug("YYYY:       sdfasfasflasflasfaslfasdf.")
-    Pupet.debug("YYYY:       #{integration}.")
     integration
   end
 
