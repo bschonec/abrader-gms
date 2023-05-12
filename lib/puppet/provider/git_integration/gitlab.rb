@@ -9,8 +9,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   defaultfor :gitlab => :exists
 
 
-  def self.prefetch
-
+  def self.instances
+    
 
   end
 
