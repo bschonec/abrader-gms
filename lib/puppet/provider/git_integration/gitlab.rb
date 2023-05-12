@@ -21,17 +21,17 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.get_list_of_integrations
     # https://nfiv-schon-02d.nfii.com/api/v4/projects/61/integrations  gets all integrations active
-    Puppet.debug("YYYY:                asasfasffs.")
+    a = __method__
+    Puppet.debug("YYYY:  method: #{a}.")
     a =  'hangouts-chat'.split("\n")
     Puppet.debug("YYYY:  a = #{a}.")
     a.sort
   end
 
   def self.fakestatus
-
-    Puppet.debug("YYYY:                asasfasffs.")
+    a = __method__
+    Puppet.debug("YYYY:  method: #{a}.")
     integration = {}
-
     integration[:ensure] = :present
     integration[:comment_on_event_enabled] = false
     integration[:confidential_issues_events] = false
