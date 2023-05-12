@@ -93,7 +93,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
-    exists_helper
+    #exists_helper
+    true
   end
 
   def get_project_id
