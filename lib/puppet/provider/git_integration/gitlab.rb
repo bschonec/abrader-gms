@@ -24,7 +24,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration[:confidential_issues_events] = false
     integration[:confidential_note_events] = false
     Puppet.debug("YYYY:       sdfasfasflasflasfaslfasdf.")
-    Puppet.debug("YYYY:       #{integration}.")
+    Pupet.debug("YYYY:       #{integration}.")
     integration
   end
 
