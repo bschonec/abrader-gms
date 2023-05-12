@@ -8,7 +8,9 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   commands :istrue => 'true', :isfalse => 'false'
   defaultfor :gitlab => :exists
 
-  mk_resource_methods
+  
+
+mk_resource_methods
 
   def self.instances
     Puppet.debug("YYYY:                asasfasffs.")
