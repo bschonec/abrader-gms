@@ -271,6 +271,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug "YYYY: property_hash = #{@propery_hash}."
     #exists_helper
     @property_hash[:ensure] == :absent 
+    false
   end
 
   def get_project_id
