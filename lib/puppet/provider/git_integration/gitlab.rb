@@ -5,7 +5,7 @@ require 'puppet_x/gms/provider'
 
 Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
-  commands :ipa => 'ipx'
+  commands :ipa => 'ip'
   defaultfor :gitlab => :exists
 
   mk_resource_methods
