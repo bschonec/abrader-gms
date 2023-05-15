@@ -496,6 +496,27 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def do_the_needful(param, value)
 
+    project_id = get_project_id
+
+    url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
+
+    begin
+      opts = { 'webhook' => resource[:webhook] }
+      Puppet.debug("YYYY: #{param}: setting to value #{value} :YYYY")
+      opts["#{param}"] = value
+      Puppet.debug("YYYY: opts: #{opts}.")
+
+      Puppet.debug("YYYY: do_the_needful #{param} :ZZZZ")
+      response = api_call('PUT', url, opts)
+
+      if (response.class == Net::HTTPOK)
+        return true
+      else
+        raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{response.inspect}")
+      end
+    rescue Exception => e
+      raise(Puppet::Error, "gitlab_integration::#{calling_method}: #{e.message}")
+    end
   end
 
 end
