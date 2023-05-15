@@ -5,7 +5,7 @@ require 'puppet_x/gms/provider'
 
 Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
-  commands :istrue => 'true', :isfalse => 'false'
+  commands :ipa => 'ip a'
   defaultfor :gitlab => :exists
 
   mk_resource_methods
@@ -16,6 +16,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     get_list_of_integrations.collect do |int|
       status = get_integration_properties()
       Puppet.debug("YYYY: status = #{status}.")
+      a = ipa
+      a.sort
       new(status)
     end
   end
