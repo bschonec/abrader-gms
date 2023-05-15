@@ -14,8 +14,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     Puppet.debug("YYYY:  resources: #{resources}.")
-      raise(Puppet::Error, "gitlab_integration::#{calling_method}: Must provide at least one of the following attributes: project_id or project_name")
-
+    Puppet.debug("YYYY:  resources: #{instances}.")
   end
 
   def self.instances
