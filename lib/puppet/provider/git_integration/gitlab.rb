@@ -41,10 +41,19 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     integration = {}
     integration[:name] = 'hangouts-chat'
-    integration[:ensure] = :absent
-    integration[:comment_on_event_enabled] = false
+    integration[:ensure] = :present
+    integration[:notify_only_broken_pipelines] = true
+    integration[:branches_to_be_notified
+    integration[:push_events] = true
+    integration[:issues_events] = true
     integration[:confidential_issues_events] = true
-    integration[:confidential_note_events] = false
+    integration[:merge_requests_events] = true
+    integration[:tag_push_events] = true
+    integration[:note_events] = true
+    integration[:confidential_note_events] = true
+    integration[:pipeline_events] = true
+    integration[:wiki_page_events] = true
+
     Puppet.debug("YYYY: integration properties = #{integration}.")
     integration
   end
