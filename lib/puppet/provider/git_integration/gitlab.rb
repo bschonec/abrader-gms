@@ -47,6 +47,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY:  METHOD: myself.#{a}.")
     integration = {}
     integration[:name] = 'hangouts-chat'
+    integration[:name] = 'gitlab' 
     integration[:ensure] = :present
     integration[:notify_only_broken_pipelines] = true
     integration[:branches_to_be_notified] = 'default_and_protected'
