@@ -7,7 +7,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
   defaultfor :gitlab => :exists
 
-  #mk_resource_methods
+  mk_resource_methods
 
   def self.instances
     a = __method__
@@ -244,6 +244,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
+      raise Puppet::Error, "ZZZZ: YYYY: status = #{status}."
     Puppet.debug "YYYY: running exists?"
     exists_helper
   end
