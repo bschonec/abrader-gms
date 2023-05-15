@@ -10,16 +10,15 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   mk_resource_methods
 
   def self.prefetch(resources)
-
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
-    Puppet.debug("YYYY:  resources: #{resources}.")
-    Puppet.debug("YYYY:  instances: #{instances}.")
+    Puppet.debug("YYYY:  resources = #{resources}.")
+    Puppet.debug("YYYY:  instances = #{instances}.")
 
     instances.each do |prov|
+      Puppet.debug( "YYYY: resource = #{prov}.")
       if resource = resources[prov.name]
         resource.provider = prov
-        Puppet.debug( "YYYY: resource = #{prov}.")
       end
     end
   end
