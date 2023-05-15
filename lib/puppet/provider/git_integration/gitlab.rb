@@ -7,7 +7,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
   defaultfor :gitlab => :exists
 
-  mk_resource_methods
+  #mk_resource_methods
 
   def self.instances
     a = __method__
