@@ -49,7 +49,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration[:name] = 'hangouts-chat'
     integration[:ensure] = :present
     integration[:notify_only_broken_pipelines] = true
-    integration[:branches_to_be_notified] = 'default'
+    integration[:branches_to_be_notified] = 'default_and_protected'
     integration[:push_events] = true
     integration[:issues_events] = true
     integration[:confidential_issues_events] = true
