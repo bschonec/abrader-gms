@@ -268,8 +268,9 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def exists?
     Puppet.debug "YYYY: running exists?"
-    Puppet.debug "YYYY: property_hash = #{@propery_hash}."
+    Puppet.debug "YYYY: property_hash = #{property_hash}  #{@propery_hash}."
     #exists_helper
+    @property_hash[:ensure] == :absent 
     @property_hash[:ensure] == :absent 
   end
 
