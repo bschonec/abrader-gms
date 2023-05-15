@@ -38,7 +38,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def self.get_integration_properties
     a = __method__
-    Puppet.debug("YYYY:  METHOD: self.#{a}.")
+    Puppet.debug("YYYY:  METHOD: myself.#{a}.")
     integration = {}
     integration[:name] = 'hangouts-chat'
     integration[:ensure] = :present
