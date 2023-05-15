@@ -18,11 +18,10 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     instances.each do |prov|
       Puppet.debug( "YYYY: prov = #{prov}.")
       if resource = resources[prov.name]
-        resource.provider = 'gitlab'
-      end
-      resource.provider = 'gitlab'
+        resource.provider = 'gitlab' prov
       end
     end
+  
   end
 
   def self.instances
