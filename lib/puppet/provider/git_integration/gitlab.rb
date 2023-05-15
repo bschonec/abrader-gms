@@ -5,7 +5,6 @@ require 'puppet_x/gms/provider'
 
 Puppet::Type.type(:git_integration).provide(:gitlab) do
   include PuppetX::GMS::Provider
-  commands :ipa => 'ip'
   defaultfor :gitlab => :exists
 
   mk_resource_methods
@@ -16,8 +15,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     get_list_of_integrations.collect do |int|
       status = get_integration_properties()
       Puppet.debug("ZZZZ: YYYY: status = #{status}.")
-      a = ipa('a')
-      Puppet.debug("ZZZZ: YYYY: status = #{a}.")
       new(status)
     end
   end
@@ -36,7 +33,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     integration = {}
     integration[:name] = 'hangouts-chat'
-    integration[:ensure] = :present
+    integration[:ensure] = :absent
     integration[:comment_on_event_enabled] = false
     integration[:confidential_issues_events] = true
     integration[:confidential_note_events] = false
