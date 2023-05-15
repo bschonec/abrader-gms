@@ -32,7 +32,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     integration = {}
-    integration[:name] = 'hangouts-chat'
+  #  integration[:name] = 'hangouts-chat'
     integration[:ensure] = :absent
     integration[:comment_on_event_enabled] = false
     integration[:confidential_issues_events] = true
