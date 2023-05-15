@@ -244,7 +244,6 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   end
 
   def exists?
-      raise Puppet::Error, "ZZZZ: YYYY: status = #{status}."
     Puppet.debug "YYYY: running exists?"
     exists_helper
   end
