@@ -16,7 +16,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY:  instances = #{instances}.")
 
     instances.each do |prov|
-      Puppet.debug( "YYYY: resource = #{prov}.")
+      Puppet.debug( "YYYY: prov = #{prov}.")
       if resource = resources[prov.name]
         resource.provider = prov
       end
