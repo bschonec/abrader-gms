@@ -20,7 +20,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
       if resource = resources[prov.name]
         resource.provider = 'gitlab' 
       end
-        resource.provider = 'gitlab' 
+        resource.provider = 'git_integration'
     end
 
   end
