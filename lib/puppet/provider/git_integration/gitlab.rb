@@ -14,7 +14,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     Puppet.debug("YYYY:  resources: #{resources}.")
-    Puppet.debug("YYYY:  resources: #{instances}.")
+    Puppet.debug("YYYY:  instances: #{instances}.")
 
     instances.each do |prov|
       if resource = resources[prov.name]
