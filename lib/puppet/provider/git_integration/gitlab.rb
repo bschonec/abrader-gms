@@ -9,10 +9,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   mk_resource_methods
 
-  def self.prefetch
+  def self.prefetch(resources)
 
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
+    Puppet.debug("YYYY:  resources: #{resources}.")
 
   end
 
