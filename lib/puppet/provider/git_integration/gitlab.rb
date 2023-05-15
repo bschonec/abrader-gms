@@ -15,6 +15,12 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     Puppet.debug("YYYY:  resources: #{resources}.")
     Puppet.debug("YYYY:  resources: #{instances}.")
+
+    instances.each do |prov|
+      if resource = resources[prov.name]
+        resource.provider = prov
+      end
+    end
   end
 
   def self.instances
