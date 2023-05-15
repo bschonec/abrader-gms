@@ -51,6 +51,11 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     integration[:notify_only_broken_pipelines] = true
     integration[:branches_to_be_notified] = 'default'
     integration[:push_events] = true
+    integration[:issues_events] = true
+    integration[:confidential_issues_events] = true
+    integration[:merge_requests_events] = true
+    integration[:tag_push_events] = true
+    integration[:note_events] = true
     integration[:confidential_note_events] = true
     integration[:pipeline_events] = true
     integration[:wiki_page_events] = true
@@ -264,9 +269,8 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def exists?
     Puppet.debug "YYYY: running exists?"
     Puppet.debug "YYYY: property_hash = #{@propery_hash}."
-    #exists_helper
-    @property_hash[:ensure] == :absent 
-    true 
+    exists_helper
+    #@property_hash[:ensure] == :absent 
   end
 
   def get_project_id
