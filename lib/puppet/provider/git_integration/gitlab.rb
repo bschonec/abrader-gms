@@ -9,6 +9,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   mk_resource_methods
 
+  def self.prefetch
+
+    a = __method__
+    Puppet.debug("YYYY:  METHOD: self.#{a}.")
+
+  end
+
   def self.instances
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
@@ -32,7 +39,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
     integration = {}
-  #  integration[:name] = 'hangouts-chat'
+    integration[:name] = 'hangouts-chat'
     integration[:ensure] = :absent
     integration[:comment_on_event_enabled] = false
     integration[:confidential_issues_events] = true
