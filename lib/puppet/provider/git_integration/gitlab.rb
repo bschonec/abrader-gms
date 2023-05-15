@@ -32,15 +32,13 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
   def self.get_integration_properties
     a = __method__
     Puppet.debug("YYYY:  METHOD: self.#{a}.")
-
-
-    
     integration = {}
     integration[:name] = 'hangouts-chat'
     integration[:ensure] = :present
     integration[:comment_on_event_enabled] = false
     integration[:confidential_issues_events] = true
     integration[:confidential_note_events] = false
+    Puppet.debug("YYYY: integration properties = #{integration}.")
     integration
   end
 
@@ -501,7 +499,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
     url = "#{gms_server}/api/#{api_version}/projects/#{project_id}/integrations/#{name}"
 
     begin
-      opts = { 'webhook' => resource[:webhook] }
+      opts = { 'webhook' => resource[:webhook].strip }
       Puppet.debug("YYYY: #{param}: setting to value #{value} :YYYY")
       opts["#{param}"] = value
       Puppet.debug("YYYY: opts: #{opts}.")
