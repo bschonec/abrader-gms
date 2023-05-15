@@ -268,8 +268,7 @@ Puppet::Type.type(:git_integration).provide(:gitlab) do
 
   def exists?
     Puppet.debug "YYYY: running exists?"
-    #exists_helper
-    @property_hash[:ensure] == :present
+    exists_helper
   end
 
   def get_project_id
